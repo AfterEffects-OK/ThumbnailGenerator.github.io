@@ -1,0 +1,485 @@
+/* 基本的なレイアウトとスタイル */
+.container {
+    display: flex;
+    width: 100%;
+    height: 98vh;
+    overflow: hidden; /* コンテンツがはみ出た場合にスクロールバーを表示しない */
+}
+
+.sidebar {
+    width: 210px; /* サイドバーの幅を少し広げました */
+    background-color: #e2eef1;
+    padding: 20px; /* パディングを増やしました */
+    overflow-y: auto;
+    flex-shrink: 0; /* サイドバーの幅が縮まないようにする */
+}
+
+.preview {
+    flex: 1; /* プレビュー領域が残りのスペースを埋める */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    overflow: hidden; /* プレビュー領域からはみ出たコンテンツを隠す */
+    position: relative; /* 相対位置指定 */
+}
+
+/* プレビューコンテナのスタイル */
+.preview-container {
+    position: relative; /* 相対位置指定 */
+    width: 100%; /* 幅を親要素に合わせる */
+    display: flex; /* フレックスボックスを使用 */
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center; /* 水平方向の中央揃え */
+    justify-content: center; /* 垂直方向の中央揃え */
+}
+
+/* プレビューラベルのスタイル */
+.preview-label {
+    position: absolute; /* 絶対位置指定 */
+    top: 20px; /* 上からの位置を調整 */
+    left: 50%; /* 左からの位置を調整 */
+    transform: translateX(-50%); /* 水平方向の中央揃え */
+    font-size: 14px; /* フォントサイズを調整 */
+    font-weight: bold; /* 太字にする */
+    color: #333; /* 文字色を調整 */
+    background-color: rgba(221, 240, 244, 0.7); /* 背景色を追加 */
+    padding: 5px 10px; /* パディングを追加 */
+    border-radius: 10px; /* 角を丸くする */
+    z-index: 10; /* キャンバスより前面に表示 */
+}
+
+/* プレビュー領域のスタイル */
+.preview {
+    flex: 1; /* プレビュー領域が残りのスペースを埋める */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    overflow: hidden; /* プレビュー領域からはみ出たコンテンツを隠す */
+    position: relative; /* 相対位置指定 */
+    width: 99%;
+    height: 99%;
+}
+
+.settings {
+    width: 215px;
+    background-color: #e2eef1; /* テキスト設定項目の背景色を画像設定項目と同じにする */
+    padding: 20px;
+    overflow-y: auto;
+    flex-shrink: 0; /* 設定領域の幅が縮まないようにする */
+}
+
+/* 設定項目のラベル全体のスタイル */
+.settings label {
+    font-size: 13px; /* ここでフォントサイズを調整します */
+    margin-bottom: 1px; /* ラベルの下マージンを調整 */
+}
+
+/* ロゴスライダーのスタイル */
+.logo-slider-container {
+    margin-bottom: 10px;
+}
+
+.logo-slider-label {
+    font-size: 16px; /* 必要に応じて個別にフォントサイズを調整します */
+    display: block;
+    margin-bottom: 0px;
+}
+
+#logoScale, #logoX, #logoY {
+    width: 150px; /* 幅を調整 */
+    margin-bottom: 5px; /* 下マージンを追加 */
+}
+
+/* スライダーとラベルを横並びにするためのスタイル */
+.slider-container {
+    display: flex; /* 横並びにする */
+    align-items: center; /* 縦方向中央揃え */
+    margin-bottom: 0px; /* 下マージンを追加 */
+    justify-content: center; /* 水平方向中央揃え */
+}
+
+.slider-container label {
+    width: 80px; /* ラベルの幅を調整 */
+    margin-right: 10px; /* ラベルとスライダーの間隔を調整 */
+    text-align: center; /* ラベルのテキストを中央寄せ */
+}
+
+.slider-container input[type="range"] {
+    flex-grow: 1; /* スライダーが残りのスペースを埋める */
+    width: 150px; /* スライダーの幅を調整 */
+}
+
+canvas {
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 100%; /* canvasの幅を親要素に合わせる */
+    height: auto; /* 高さを自動調整 */
+    max-width: 1280px; /* 最大幅を設定 */
+    max-height: 720px; /* 最大高さを設定 */
+    position: absolute; /* 絶対位置指定 */
+    top: 50%; /* 上から50%の位置に配置 */
+    left: 50%; /* 左から50%の位置に配置 */
+    transform: translate(-50%, -50%); /* 中央に配置 */
+}
+
+.drop-area {
+    border: 2px dashed #ccc;
+    background-color: #eef7f9;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px; /* マージンを増やしました */
+    cursor: pointer; /* カーソルをポインタに変更 */
+}
+
+.drop-area.highlight {
+    border-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.1); /* ハイライト時の背景色 */
+}
+
+.drop-area label {
+    display: block;
+    font-size: 11px;
+    color: #787878;
+    margin-bottom: 0px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 0px; /* マージンを増やしました */
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* 幅の計算にpadding, borderを含める */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 12px; /* パディングを調整 */
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px; /* 角を丸くする */
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+button2 {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 40px; /* パディングを調整 */
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px; /* 角を丸くする */
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+button:hover {
+    background-color: #0056b3; /* ホバー時の色 */
+}
+
+#fontFamily1, #fontFamily2 {
+    width: 200px; /* ドロップダウンリストの幅を180pxに設定 */
+    padding: 5px; /* パディングを追加 */
+    border: 1px solid #ccc; /* 枠線を追加 */
+    border-radius: 4px; /* 角を丸くする */
+    box-sizing: border-box; /* 幅にパディングとボーダーを含める */
+    font-size: 16px; /* フォントサイズを調整 */
+    margin-bottom: 10px; /* 下マージンを追加 */
+}
+
+#fontSize, #textX, #textY {
+    width: 150px; /* 幅を調整 */
+    margin-bottom: 10px; /* 下マージンを追加 */
+}
+
+.color-button1, .color-button2 {
+    width: 15px; /* 幅を15pxに変更 */
+    height: 15px; /* 高さを15pxに変更 */
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+#fontList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.font-item {
+    cursor: pointer;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 166px;
+}
+
+.font-item.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.edge-color-button1, .edge-color-button2 {
+    width: 15px;
+    height: 15px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+.text-background-color-button1, .text-background-color-button2 {
+    width: 15px;
+    height: 15px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+}
+
+/* カスタムカラーピッカーのスタイル */
+#customColor {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    width: 18px;              /* 幅を調整 */
+    height: 18px;             /* 高さを調整 */
+    border: 1px solid #ccc; /* 枠線を調整 */
+    border-radius: 50%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 3;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue);
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* カラーピッカーのバリュー部分のスタイル */
+#customColor::-webkit-color-swatch-wrapper {
+    padding: 3; /* パディングを削除 */
+}
+
+#customColor::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 50%; /* 角を丸くする（円形にする） */
+}
+
+#customColor::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 50%; /* 角を丸くする（円形にする） */
+}
+
+/* エッジのカスタムカラーピッカーのスタイル */
+#customEdgeColor {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    width: 18px;              /* 幅を調整 */
+    height: 18px;             /* 高さを調整 */
+    border: 1px solid #ccc; /* 枠線を調整 */
+    border-radius: 50%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue);
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* エッジのカラーピッカーのバリュー部分のスタイル */
+#customEdgeColor::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customEdgeColor::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 50%; /* 角を丸くする（円形にする） */
+}
+
+#customEdgeColor::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 50%; /* 角を丸くする（円形にする） */
+}
+
+/* 色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* エッジの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.edge-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* 「サムじぇね」のラベルのスタイル */
+#logo-text {
+    font-family: 'Aoboshi One', sans-serif; /* フォントをAoboshi Oneに指定 */
+    font-size: 26px; /* サイズを大きく */
+    font-weight: bold; /* 太字にする */
+    color: rgb(0, 0, 0); /* 文字色を黒にする */
+    margin-right: 5px; /* アイコンとの間隔を調整 */
+    vertical-align: middle; /* アイコンとテキストを垂直方向に中央揃え */
+}
+
+/* YouTubeアイコンのスタイル */
+.fa-youtube {
+    color: red; /* アイコンの色を赤にする */
+    font-size: 32px; /* アイコンのサイズを調整 */
+    margin-right: 5px; /* アイコンとの間隔を調整 */
+    margin-bottom: 0px; /* 下マージンを追加 */
+    vertical-align: middle; /* アイコンとテキストを垂直方向に中央揃え */
+}
+
+/* 項目名（ラベル）のスタイル */
+.label-text {
+    font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントを丸ゴシック体に指定 */
+    font-size: 18px; /* フォントサイズを指定 */
+    font-weight: bold; /* 太字にするかどうか */
+    color: #333; /* 文字色を指定 */
+    display: block; /* ブロック要素にする */
+    margin-bottom: -2px; /* 下マージンを追加 */
+}
+
+/* テキストの背景色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.text-background-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* テキストのカスタム背景カラーピッカーのスタイル */
+#customTextBackgroundColor1, #customTextBackgroundColor2 {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    width: 50px;              /* 幅を調整 */
+    height: 25px;             /* 高さを調整 */
+    border: 1px solid #383838; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    margin-bottom: 5px;
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(204, 204, 204));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* テキストの背景カラーピッカーのバリュー部分のスタイル */
+#customTextBackgroundColor1::-webkit-color-swatch-wrapper, #customTextBackgroundColor2::-webkit-color-swatch-wrapper {
+    padding: 10; /* パディングを削除 */
+}
+
+#customTextBackgroundColor1::-webkit-color-swatch, #customTextBackgroundColor2::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customTextBackgroundColor1::-moz-color-swatch, #customTextBackgroundColor2::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+/* リセットボタン */
+.reset-button {
+    background-color: #82c4ff;
+    border: 1px solid #37afff;
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin-left: 63px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+/* リサイズボタン */
+.resize-button {
+    background-color: #82c4ff;
+    border: 1px solid #37afff;
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin-left: 63px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.resize-button:hover {
+    background-color: #0681e5;
+}
+
+/* 高さリサイズボタン */
+.resize-button.height-resize {
+    background-color: #ff8282;
+    border: 1px solid #ff3737;
+}
+
+.resize-button.height-resize:hover {
+    background-color: #e50606;
+}
+
+/* プリセットボタン */
+.preset-button {
+    background-color: #829dff;
+    border: 1px solid #3766ff;
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin-left: 63px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.reset-button:hover {
+    background-color: #0681e5;
+}
+
+/* ロゴのエッジの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.logo-edge-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* ロゴのエッジの色アイコンのスタイル */
+.logo-edge-color-button {
+    width: 18px;
+    height: 18px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+/* ロゴのカスタムエッジカラーピッカーのスタイル */
+#customLogoEdgeColor {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    height: 25px;             /* 高さを調整 */
+    width: 50px;              /* 幅を調整 */
+    border: 1px solid #ccc; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(234, 234, 234));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* ロゴのエッジのカラーピッカーのバリュー部分のスタイル */
+#customLogoEdgeColor::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customLogoEdgeColor::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customLogoEdgeColor::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
