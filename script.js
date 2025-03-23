@@ -846,7 +846,7 @@
         downloadLink.click();
         document.body.removeChild(downloadLink);
         console.log('ダウンロード処理が完了しました');
-        alert('ダウンロードできました！');
+        // alert('ダウンロードできました！');
     });
     // 生成ボタンクリック時の処理 (クリップボードコピー機能)
     generateCopyButton.addEventListener('click', async () => {
