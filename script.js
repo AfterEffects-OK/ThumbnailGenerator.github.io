@@ -110,6 +110,7 @@
         { name: 'keifont', value: "'keifont', sans-serif", isBold: false }, // keifontを追加
         { name: 'GN-KillGothic-U-KanaNA', value: "'GN-KillGothic-U-KanaNA', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNAを追加
         { name: 'GN-KillGothic-U-KanaNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
+        { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
         { name: 'Noto Sans JP', value: "'Noto Sans JP', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"},
         { name: 'M PLUS 1p', value: "'M PLUS 1p', sans-serif" , url: "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"},
         { name: 'Roboto', value: "'Roboto', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"},
