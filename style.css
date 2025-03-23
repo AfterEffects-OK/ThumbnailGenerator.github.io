@@ -5,6 +5,12 @@
     font-style: normal; /* フォントのスタイル（通常） */
 }
 @font-face {
+    font-family: 'keifont'; /* フォントファミリー名を指定 */
+    src: url('fonts/keifont.ttf') format('truetype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
     font-family: 'YDWbananaslipplus'; /* フォントファミリー名を指定 */
     src: url('fonts/YDWbananaslipplus.otf') format('opentype'); /* otf形式のフォントファイル */
     font-weight: normal; /* フォントの太さ（通常） */
