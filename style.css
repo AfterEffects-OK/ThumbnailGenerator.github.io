@@ -52,6 +52,12 @@
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
+@font-face {
+    font-family: 'AkazukiPOP'; /* フォントファミリー名を指定 */
+    src: url('fonts/AkazukiPOP.otf') format('opentype'); /* otf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
 
 /* 基本的なレイアウトとスタイル */
 .container {
@@ -375,7 +381,7 @@ button:hover {
 
 /* 「サムじぇね」のラベルのスタイル */
 #logo-text {
-    font-family: 'Aoboshi One', sans-serif; /* フォントをAoboshi Oneに指定 */
+    font-family: 'AkazukiPOP', sans-serif; /* フォントをAkazukiPOPに指定 */
     font-size: 26px; /* サイズを大きく */
     font-weight: bold; /* 太字にする */
     color: rgb(0, 0, 0); /* 文字色を黒にする */
