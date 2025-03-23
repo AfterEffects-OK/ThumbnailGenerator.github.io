@@ -64,6 +64,48 @@
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
+@font-face {
+    font-family: 'Kaisotai-Next-UP-B'; /* フォントファミリー名を指定 */
+    src: url('fonts/Kaisotai-Next-UP-B.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'GenEiPOPlePw-Bk'; /* フォントファミリー名を指定 */
+    src: url('fonts/GenEiPOPlePw-Bk.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'GenEiLateGoP_v2'; /* フォントファミリー名を指定 */
+    src: url('fonts/GenEiLateGoP_v2.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'GenEiLateMinP_v2'; /* フォントファミリー名を指定 */
+    src: url('fonts/GenEiLateMinP_v2.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'genkai-mincho'; /* フォントファミリー名を指定 */
+    src: url('fonts/genkai-mincho.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'kurobara-cinderella'; /* フォントファミリー名を指定 */
+    src: url('fonts/kurobara-cinderella.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: '玉ねぎ楷書激無料版v7改'; /* フォントファミリー名を指定 */
+    src: url('fonts/玉ねぎ楷書激無料版v7改.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
 
 /* 基本的なレイアウトとスタイル */
 .container {

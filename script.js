@@ -109,10 +109,17 @@
         { name: 'LightNovelPOPv2', value: "'LightNovelPOPv2', sans-serif", isBold: false }, // LightNovelPOPv2を追加
         { name: 'keifont', value: "'keifont', sans-serif", isBold: false }, // keifontを追加
         { name: 'puikko-Regular', value: "'puikko-Regular', sans-serif", isBold: false }, // puikko-Regularを追加
+        { name: 'Kaisotai-Next-UP-B', value: "'Kaisotai-Next-UP-B', sans-serif", isBold: false }, // Kaisotai-Next-UP-Bを追加
+        { name: 'kurobara-cinderella', value: "'kurobara-cinderella', sans-serif", isBold: false }, // kurobara-cinderellaを追加
         { name: 'GN-KillGothic-U-KanaNA', value: "'GN-KillGothic-U-KanaNA', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNAを追加
         { name: 'GN-KillGothic-U-KanaNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
         { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
         { name: 'KTEGAKI', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
+        { name: 'GenEiPOPlePw-Bk', value: "'GenEiPOPlePw-Bk', sans-serif", isBold: false }, // GenEiPOPlePw-Bkを追加
+        { name: 'GenEiLateGoP_v2', value: "'GenEiLateGoP_v2', sans-serif", isBold: false }, // GenEiLateGoP_v2を追加
+        { name: 'GenEiLateMinP_v2', value: "'GenEiLateMinP_v2', sans-serif", isBold: false }, // GenEiLateMinP_v2を追加
+        { name: 'genkai-mincho', value: "'genkai-mincho', sans-serif", isBold: false }, // genkai-minchoを追加
+        { name: '玉ねぎ楷書激無料版v7改', value: "'玉ねぎ楷書激無料版v7改', sans-serif", isBold: false }, // 玉ねぎ楷書激無料版v7改を追加
         { name: 'Noto Sans JP', value: "'Noto Sans JP', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"},
         { name: 'M PLUS 1p', value: "'M PLUS 1p', sans-serif" , url: "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"},
         { name: 'Roboto', value: "'Roboto', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"},
