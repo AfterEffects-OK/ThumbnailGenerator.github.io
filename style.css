@@ -46,6 +46,12 @@
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
+@font-face {
+    font-family: 'KTEGAKI'; /* フォントファミリー名を指定 */
+    src: url('fonts/KTEGAKI.ttf') format('truetype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
 
 /* 基本的なレイアウトとスタイル */
 .container {
