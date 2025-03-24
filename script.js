@@ -851,6 +851,7 @@
         textY1 = 400;
         textY2 = 600;
         fontSize2 = 90;
+        outerEdgeWidth1 = 13;    
         textBackgroundOpacity2 = 0;
         textBackgroundHeight2 = -30;
         textBackgroundPadding2 = 10;
@@ -865,6 +866,7 @@
         textBackgroundOpacityInput2.value = textBackgroundOpacity2;
         textBackgroundHeightInput2.value = textBackgroundHeight2;
         textBackgroundPaddingInput2.value = textBackgroundPadding2;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
         redrawCanvas();
     });
     
@@ -879,6 +881,8 @@
         textY1 = 490;
         textY2 = 650;
         fontSize2 = 85;
+        outerEdgeWidth1 = 16;        
+        outerEdgeColor1 = "#FFFFFF";
         textBackgroundOpacity2 = 1;
         textBackgroundHeight2 = -80;
         textBackgroundColor2 = "green";
@@ -895,6 +899,8 @@
         textBackgroundHeightInput2.value = textBackgroundHeight2;
         customTextBackgroundColorInput2.value = textBackgroundColor2;
         textBackgroundPaddingInput2.value = textBackgroundPadding2;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        
         redrawCanvas();
     });
 
