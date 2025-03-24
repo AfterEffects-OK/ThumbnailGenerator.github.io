@@ -17,6 +17,7 @@
     <div class="sidebar">
         <!-- 素材アップロード、テンプレート選択など -->
         <label><i class="fab fa-youtube"></i><span id="logo-text">サムじぇね</span></label>
+        <span id="sub-logo-text">YouTube thumbnail generator</span>
         <br><br>
         <label><span class="label-text">画像</span></label>
         <div id="imageDropArea" class="drop-area">
@@ -86,7 +87,7 @@
     </div>
 
     <div class="settings">
-        <!-- テキスト編集パネル -->
+        <!-- タイトル編集パネル -->
         <label><span class="label-text">タイトル</span></label>
         <textarea id="textInput1" rows="3" placeholder="テキストを入力"></textarea>
         <div class="slider-container">
@@ -127,8 +128,45 @@
             <label for="edgeWidth1">太さ</label>
             <input type="range" id="edgeWidth1" min="0" max="30" value="13">
         </div>
-        <br>
-        <label>背景色</label><br>
+        <label>外側エッジの色</label><br>
+        <div class="outer-edge-color-picker-container">
+            <button class="outer-edge-color-button1" data-color="white" style="background-color: white;"></button>
+            <button class="outer-edge-color-button1" data-color="black" style="background-color: black;"></button>
+            <button class="outer-edge-color-button1" data-color="red" style="background-color: red;"></button>
+            <button class="outer-edge-color-button1" data-color="blue" style="background-color: blue;"></button>
+            <button class="outer-edge-color-button1" data-color="green" style="background-color: green;"></button>
+            <input type="color" id="customOuterEdgeColor1" value="#000000">
+        </div>
+        <div class="slider-container">
+            <label for="outerEdgeWidth1">太さ</label>
+            <input type="range" id="outerEdgeWidth1" min="0" max="50" value="0">
+        </div> 
+        <label><input type="checkbox" id="showShadowSettings1"> シャドウ設定</label><br>
+        <div id="shadowSettings1">       
+            <label>シャドウの色</label><br>
+            <div class="shadow-color-picker-container">
+                <button class="shadow-color-button1" data-color="black" style="background-color: black;"></button>
+                <button class="shadow-color-button1" data-color="white" style="background-color: white;"></button>
+                <button class="shadow-color-button1" data-color="brightYellow" style="background-color: rgb(252, 255, 51);"></button>
+                <button class="shadow-color-button1" data-color="red" style="background-color: red;"></button>
+                <button class="shadow-color-button1" data-color="blue" style="background-color: rgb(0, 157, 255);"></button>
+                <input type="color" id="customShadowColor1" value="#000000">
+            </div>
+            <div class="slider-container">
+                <label for="shadowBlur1">ぼかし</label>
+                <input type="range" id="shadowBlur1" min="0" max="50" value="0">
+            </div>
+            <div class="slider-container">
+                <label for="shadowOffsetX1">X補正</label>
+                <input type="range" id="shadowOffsetX1" min="-50" max="50" value="0">
+            </div>
+            <div class="slider-container">
+                <label for="shadowOffsetY1">Y補正</label>
+                <input type="range" id="shadowOffsetY1" min="-50" max="50" value="0">
+            </div>
+        </div>
+            <br>
+                <label>背景色</label><br>
         <div class="text-background-color-picker-container">
             <button class="text-background-color-button1" data-color="white" style="background-color: white;"></button>
             <button class="text-background-color-button1" data-color="black" style="background-color: black;"></button>
@@ -154,6 +192,8 @@
             <input type="range" id="textBackgroundPadding1" min="0" max="100" value="15" step="1">
         </div>
         <br>
+
+        <!-- テキスト編集パネル -->
         <label for="textInput2"><span class="label-text">テキスト</span></label>
         <textarea id="textInput2" rows="3" placeholder="テキストを入力"></textarea>
         <div class="slider-container">
@@ -195,7 +235,44 @@
         <div class="slider-container">
             <label for="edgeWidth2">太さ</label>
             <input type="range" id="edgeWidth2" min="0" max="30" value="3">
-        </div><br>
+        </div>
+        <label>外側エッジの色</label><br>
+        <div class="outer-edge-color-picker-container">
+            <button class="outer-edge-color-button2" data-color="white" style="background-color: white;"></button>
+            <button class="outer-edge-color-button2" data-color="black" style="background-color: black;"></button>
+            <button class="outer-edge-color-button2" data-color="red" style="background-color: red;"></button>
+            <button class="outer-edge-color-button2" data-color="blue" style="background-color: blue;"></button>
+            <button class="outer-edge-color-button2" data-color="green" style="background-color: green;"></button>
+            <input type="color" id="customOuterEdgeColor2" value="#000000">
+        </div>
+        <div class="slider-container">
+            <label for="outerEdgeWidth2">太さ</label>
+            <input type="range" id="outerEdgeWidth2" min="0" max="50" value="0">
+        </div>
+        <label><input type="checkbox" id="showShadowSettings2"> シャドウ設定</label><br>
+        <div id="shadowSettings2">
+            <label>シャドウの色</label><br>
+            <div class="shadow-color-picker-container">
+                <button class="shadow-color-button2" data-color="black" style="background-color: black;"></button>
+                <button class="shadow-color-button2" data-color="white" style="background-color: white;"></button>
+                <button class="shadow-color-button2" data-color="brightYellow" style="background-color: rgb(252, 255, 51);"></button>
+                <button class="shadow-color-button2" data-color="red" style="background-color: red;"></button>
+                <button class="shadow-color-button2" data-color="blue" style="background-color: rgb(0, 157, 255);"></button>
+                <input type="color" id="customShadowColor2" value="#000000">
+            </div>
+            <div class="slider-container">
+                <label for="shadowBlur2">ぼかし</label>
+                <input type="range" id="shadowBlur2" min="0" max="50" value="0">
+            </div>
+            <div class="slider-container">
+                <label for="shadowOffsetX2">X補正</label>
+                <input type="range" id="shadowOffsetX2" min="-50" max="50" value="0">
+            </div>
+            <div class="slider-container">
+                <label for="shadowOffsetY2">Y補正</label>
+                <input type="range" id="shadowOffsetY2" min="-50" max="50" value="0">
+            </div>
+        </div>
         <label>背景色</label><br>
         <div class="text-background-color-picker-container">
             <button class="text-background-color-button2" data-color="white" style="background-color: white;"></button>

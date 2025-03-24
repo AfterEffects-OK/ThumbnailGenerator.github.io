@@ -30,6 +30,26 @@
     const customEdgeColorInput2 = document.getElementById('customEdgeColor2'); // 2つ目のテキストのカスタムエッジカラーピッカー
     const edgeWidthInput1 = document.getElementById('edgeWidth1'); // 1つ目のテキストのエッジの太さ
     const edgeWidthInput2 = document.getElementById('edgeWidth2'); // 2つ目のテキストのエッジの太さ
+    const customOuterEdgeColorInput1 = document.getElementById('customOuterEdgeColor1'); // 1つ目のテキストのカスタム外側エッジカラーピッカー
+    const outerEdgeWidthInput1 = document.getElementById('outerEdgeWidth1'); // 1つ目のテキストの外側エッジの太さ
+    const outerEdgeColorButtons1 = document.querySelectorAll('.outer-edge-color-button1'); // 1つ目のテキストの外側エッジの色選択ボタン
+    const customShadowColorInput1 = document.getElementById('customShadowColor1'); // 1つ目のテキストのカスタムシャドウカラーピッカー
+    const showShadowSettingsCheckbox1 = document.getElementById('showShadowSettings1'); // シャドウ設定の表示/非表示を切り替えるチェックボックス
+    const shadowSettingsDiv1 = document.getElementById('shadowSettings1'); // シャドウ設定項目を囲むdiv
+    const shadowBlurInput1 = document.getElementById('shadowBlur1'); // 1つ目のテキストのシャドウのぼかし
+    const shadowOffsetXInput1 = document.getElementById('shadowOffsetX1'); // 1つ目のテキストのシャドウのXオフセット
+    const shadowOffsetYInput1 = document.getElementById('shadowOffsetY1'); // 1つ目のテキストのシャドウのYオフセット
+    const shadowColorButtons1 = document.querySelectorAll('.shadow-color-button1'); // 1つ目のテキストのシャドウの色選択ボタン
+    const customOuterEdgeColorInput2 = document.getElementById('customOuterEdgeColor2'); // 2つ目のテキストのカスタム外側エッジカラーピッカー
+    const outerEdgeWidthInput2 = document.getElementById('outerEdgeWidth2'); // 2つ目のテキストの外側エッジの太さ
+    const outerEdgeColorButtons2 = document.querySelectorAll('.outer-edge-color-button2'); // 2つ目のテキストの外側エッジの色選択ボタン
+    const customShadowColorInput2 = document.getElementById('customShadowColor2'); // 2つ目のテキストのカスタムシャドウカラーピッカー
+    const showShadowSettingsCheckbox2 = document.getElementById('showShadowSettings2'); // 2つ目のテキストのシャドウ設定の表示/非表示を切り替えるチェックボックス
+    const shadowSettingsDiv2 = document.getElementById('shadowSettings2'); // 2つ目のテキストのシャドウ設定項目を囲むdiv
+    const shadowBlurInput2 = document.getElementById('shadowBlur2'); // 2つ目のテキストのシャドウのぼかし
+    const shadowOffsetXInput2 = document.getElementById('shadowOffsetX2'); // 2つ目のテキストのシャドウのXオフセット
+    const shadowOffsetYInput2 = document.getElementById('shadowOffsetY2'); // 2つ目のテキストのシャドウのYオフセット
+    const shadowColorButtons2 = document.querySelectorAll('.shadow-color-button2'); // 2つ目のテキストのシャドウの色選択ボタン
     // テキストの背景色選択ボタンのイベントリスナー
     const textBackgroundColorButtons1 = document.querySelectorAll('.text-background-color-button1'); // 1つ目のテキストの背景色選択ボタン
     const textBackgroundColorButtons2 = document.querySelectorAll('.text-background-color-button2'); // 2つ目のテキストの背景色選択ボタン
@@ -76,6 +96,20 @@
     let edgeColor2 = 'white'; // 2つ目のテキストのエッジの色の初期値
     let edgeWidth1 = 13; // 1つ目のテキストのエッジの太さの初期値
     let edgeWidth2 = 15; // 2つ目のテキストのエッジの太さの初期値
+    let outerEdgeColor1 = 'black'; // 1つ目のテキストの外側エッジの色の初期値
+    let outerEdgeWidth1 = 0; // 1つ目のテキストの外側エッジの太さの初期値
+    let outerEdgeColor2 = 'black'; // 2つ目のテキストの外側エッジの色の初期値
+    let outerEdgeWidth2 = 0; // 2つ目のテキストの外側エッジの太さの初期値
+    shadowSettingsDiv1.style.display = 'none'; // 初期状態でシャドウ設定を非表示にする
+    shadowSettingsDiv2.style.display = 'none'; // 初期状態でシャドウ設定を非表示にする
+    let shadowColor1 = 'black'; // 1つ目のテキストのシャドウの色の初期値
+    let shadowBlur1 = 0; // 1つ目のテキストのシャドウのぼかしの初期値
+    let shadowOffsetX1 = 0; // 1つ目のテキストのシャドウのXオフセットの初期値
+    let shadowOffsetY1 = 0; // 1つ目のテキストのシャドウのYオフセットの初期値
+    let shadowColor2 = 'black'; // 2つ目のテキストのシャドウの色の初期値
+    let shadowBlur2 = 0; // 2つ目のテキストのシャドウのぼかしの初期値
+    let shadowOffsetX2 = 0; // 2つ目のテキストのシャドウのXオフセットの初期値
+    let shadowOffsetY2 = 0; // 2つ目のテキストのシャドウのYオフセットの初期値
     let textBackgroundColor1 = 'black'; // 1つ目のテキストの背景色の初期値
     let textBackgroundColor2 = 'black'; // 2つ目のテキストの背景色の初期値
     let textBackgroundOpacity1 = 0; // 1つ目のテキストの背景の不透明度の初期値
@@ -474,7 +508,147 @@
         edgeWidth2 = parseInt(e.target.value);
         redrawCanvas();
     });
+
+    // 外側のエッジの色選択ボタンのイベントリスナー
+    outerEdgeColorButtons1.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('外側のエッジの色選択ボタン1がクリックされました');
+            outerEdgeColor1 = e.target.dataset.color;
+            redrawCanvas();
+        });
+    });
+
+    // 外側のエッジの色選択ボタンのイベントリスナー
+    outerEdgeColorButtons2.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('外側のエッジの色選択ボタン2がクリックされました');
+            outerEdgeColor2 = e.target.dataset.color;
+            redrawCanvas();
+        });
+    });
     
+    // カスタム外側エッジカラーピッカーのイベントリスナー
+    customOuterEdgeColorInput1.addEventListener('change', (e) => {
+        console.log('カスタム外側エッジカラーピッカー1の値が変更されました');
+        outerEdgeColor1 = e.target.value;
+        redrawCanvas();
+    });
+    
+    // カスタム外側エッジカラーピッカーのイベントリスナー
+    customOuterEdgeColorInput2.addEventListener('change', (e) => {
+        console.log('カスタム外側エッジカラーピッカー2の値が変更されました');
+        outerEdgeColor2 = e.target.value;
+        redrawCanvas();
+    });
+    
+    // 外側のエッジの太さ変更時のイベントリスナー
+    outerEdgeWidthInput1.addEventListener('input', (e) => {
+        console.log('外側のエッジの太さ1変更イベントが発生しました');
+        outerEdgeWidth1 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+    
+    // 外側のエッジの太さ変更時のイベントリスナー
+    outerEdgeWidthInput2.addEventListener('input', (e) => {
+        console.log('外側のエッジの太さ2変更イベントが発生しました');
+        outerEdgeWidth2 = parseInt(e.target.value);
+        redrawCanvas();
+    });    
+    
+    // シャドウ設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showShadowSettingsCheckbox1.addEventListener('change', (e) => {
+        console.log('シャドウ設定の表示/非表示チェックボックス1が変更されました');
+        if (e.target.checked) {
+            shadowSettingsDiv1.style.display = 'block'; // 表示
+        } else {
+            shadowSettingsDiv1.style.display = 'none'; // 非表示
+        }
+    });
+
+    // シャドウの色選択ボタンのイベントリスナー
+    shadowColorButtons1.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('シャドウの色選択ボタン1がクリックされました');
+            shadowColor1 = e.target.dataset.color;
+            redrawCanvas();
+        });
+    });
+
+    // カスタムシャドウカラーピッカーのイベントリスナー
+    customShadowColorInput1.addEventListener('change', (e) => {
+        console.log('カスタムシャドウカラーピッカー1の値が変更されました');
+        shadowColor1 = e.target.value;
+        redrawCanvas();
+    });
+
+    // シャドウのぼかし変更時のイベントリスナー
+    shadowBlurInput1.addEventListener('input', (e) => {
+        console.log('シャドウのぼかし1変更イベントが発生しました');
+        shadowBlur1 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // シャドウのXオフセット変更時のイベントリスナー
+    shadowOffsetXInput1.addEventListener('input', (e) => {
+        console.log('シャドウのXオフセット1変更イベントが発生しました');
+        shadowOffsetX1 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // シャドウのYオフセット変更時のイベントリスナー
+    shadowOffsetYInput1.addEventListener('input', (e) => {
+        console.log('シャドウのYオフセット1変更イベントが発生しました');
+        shadowOffsetY1 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // シャドウ設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showShadowSettingsCheckbox2.addEventListener('change', (e) => {
+        console.log('シャドウ設定の表示/非表示チェックボックス2が変更されました');
+        if (e.target.checked) {
+            shadowSettingsDiv2.style.display = 'block'; // 表示
+        } else {
+            shadowSettingsDiv2.style.display = 'none'; // 非表示
+        }
+    });
+    
+    // シャドウの色選択ボタンのイベントリスナー
+    shadowColorButtons2.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('シャドウの色選択ボタン2がクリックされました');
+            shadowColor2 = e.target.dataset.color;
+            redrawCanvas();
+        });
+    });
+    
+    // カスタムシャドウカラーピッカーのイベントリスナー
+    customShadowColorInput2.addEventListener('change', (e) => {
+        console.log('カスタムシャドウカラーピッカー2の値が変更されました');
+        shadowColor2 = e.target.value;
+        redrawCanvas();
+    });
+    
+    // シャドウのぼかし変更時のイベントリスナー
+    shadowBlurInput2.addEventListener('input', (e) => {
+        console.log('シャドウのぼかし2変更イベントが発生しました');
+        shadowBlur2 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+    
+    // シャドウのXオフセット変更時のイベントリスナー
+    shadowOffsetXInput2.addEventListener('input', (e) => {
+        console.log('シャドウのXオフセット2変更イベントが発生しました');
+        shadowOffsetX2 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+    
+    // シャドウのYオフセット変更時のイベントリスナー
+    shadowOffsetYInput2.addEventListener('input', (e) => {
+        console.log('シャドウのYオフセット2変更イベントが発生しました');
+        shadowOffsetY2 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
     // テキストの背景色選択ボタンのイベントリスナー
     textBackgroundColorButtons1.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -778,6 +952,24 @@
         const backgroundY1 = textY1 - lineHeight1;
         ctx.fillRect(backgroundX1, backgroundY1 - textBackgroundPadding1 - textBackgroundHeight1, textBackgroundWidth1 + backgroundWidth1, textHeight1 + textBackgroundPadding1 * 2 + textBackgroundHeight1);
         ctx.globalAlpha = 1.0; // 不透明度をリセット
+        // シャドウの設定
+        ctx.shadowColor = shadowColor1;
+        ctx.shadowBlur = shadowBlur1;
+        ctx.shadowOffsetX = shadowOffsetX1;
+        ctx.shadowOffsetY = shadowOffsetY1;
+        // 外側のエッジの描画
+        if (outerEdgeWidth1 > 0) {
+            ctx.strokeStyle = outerEdgeColor1;
+            ctx.lineWidth = outerEdgeWidth1;
+            textLines1.forEach((line, index) => {
+                ctx.strokeText(line, textX1, textY1 + index * lineHeight1);
+            });
+        }
+        // シャドウのリセット
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
         // エッジの描画
         if (edgeWidth1 > 0) {
             ctx.strokeStyle = edgeColor1;
@@ -807,6 +999,24 @@
         const backgroundY2 = textY2 - lineHeight2;
         ctx.fillRect(backgroundX2, backgroundY2 - textBackgroundPadding2 - textBackgroundHeight2, textBackgroundWidth2 + backgroundWidth2, textHeight2 + textBackgroundPadding2 * 2 + textBackgroundHeight2);
         ctx.globalAlpha = 1.0; // 不透明度をリセット
+        // シャドウの設定
+        ctx.shadowColor = shadowColor2;
+        ctx.shadowBlur = shadowBlur2;
+        ctx.shadowOffsetX = shadowOffsetX2;
+        ctx.shadowOffsetY = shadowOffsetY2;
+        // 外側のエッジの描画
+        if (outerEdgeWidth2 > 0) {
+            ctx.strokeStyle = outerEdgeColor2;
+            ctx.lineWidth = outerEdgeWidth2;
+            textLines2.forEach((line, index) => {
+                ctx.strokeText(line, textX2, textY2 + index * lineHeight2);
+            });
+        }
+        // シャドウのリセット
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
         // エッジの描画
         if (edgeWidth2 > 0) {
             ctx.strokeStyle = edgeColor2;

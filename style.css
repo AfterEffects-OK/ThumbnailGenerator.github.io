@@ -153,8 +153,8 @@
     font-weight: bold; /* 太字にする */
     color: #333; /* 文字色を調整 */
     background-color: rgba(221, 240, 244, 0.7); /* 背景色を追加 */
-    padding: 5px 10px; /* パディングを追加 */
-    border-radius: 10px; /* 角を丸くする */
+    padding: 5px 20px; /* パディングを追加 */
+    border-radius: 30px; /* 角を丸くする */
     z-index: 10; /* キャンバスより前面に表示 */
 }
 
@@ -427,6 +427,107 @@ button:hover {
     align-items: center; /* 垂直方向の中央揃え */
 }
 
+/* 外側のエッジの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.outer-edge-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* 外側のエッジの色アイコンのスタイル */
+.outer-edge-color-button1, .outer-edge-color-button2 {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #b5b5b5;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+/* 外側のエッジのカスタムカラーピッカーのスタイル */
+#customOuterEdgeColor1, #customOuterEdgeColor2 {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    width: 50px;              /* 幅を調整 */
+    height: 25px;             /* 高さを調整 */
+    border: 1px solid #434343; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(220, 220, 220));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* 外側のエッジのカラーピッカーのバリュー部分のスタイル */
+#customOuterEdgeColor1::-webkit-color-swatch-wrapper, #customOuterEdgeColor2::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customOuterEdgeColor1::-webkit-color-swatch, #customOuterEdgeColor2::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customOuterEdgeColor1::-moz-color-swatch, #customOuterEdgeColor2::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+/* シャドウ設定項目を囲むdivのスタイル */
+#shadowSettings1, #shadowSettings2 {
+    display: block; /* 初期状態は表示 */
+}
+
+/* シャドウの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.shadow-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* シャドウの色アイコンのスタイル */
+.shadow-color-button1, .shadow-color-button2 {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #b5b5b5;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+/* シャドウのカスタムカラーピッカーのスタイル */
+#customShadowColor1, #customShadowColor2 {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    width: 50px;              /* 幅を調整 */
+    height: 25px;             /* 高さを調整 */
+    border: 1px solid #323232; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(211, 211, 211));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* シャドウのカラーピッカーのバリュー部分のスタイル */
+#customShadowColor1::-webkit-color-swatch-wrapper, #customShadowColor2::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customShadowColor1::-webkit-color-swatch, #customShadowColor2::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customShadowColor1::-moz-color-swatch, #customShadowColor2::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
 /* 「サムじぇね」のラベルのスタイル */
 #logo-text {
     font-family: 'AkazukiPOP', sans-serif; /* フォントをAkazukiPOPに指定 */
@@ -436,6 +537,15 @@ button:hover {
     margin-right: 5px; /* アイコンとの間隔を調整 */
     vertical-align: middle; /* アイコンとテキストを垂直方向に中央揃え */
     padding-bottom: 5px; /* 下にパディングを追加 */
+}
+/* 「YouTube thumbnail generator」のスタイル */
+#sub-logo-text {
+    font-family: 'M PLUS 1p', sans-serif; /* フォントを指定 */
+    font-size: 12px; /* フォントサイズを小さく */
+    color: #b4b4b4; /* 薄めの色に */
+    display: block; /* ブロック要素として表示 */
+    margin-top: -3px; /* 上マージンを調整して「サムじぇね」に近づける */
+    margin-left: 3px;
 }
 
 /* YouTubeアイコンのスタイル */
