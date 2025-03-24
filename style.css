@@ -544,7 +544,7 @@ button:hover {
     font-size: 12px; /* フォントサイズを小さく */
     color: #b4b4b4; /* 薄めの色に */
     display: block; /* ブロック要素として表示 */
-    margin-top: -3px; /* 上マージンを調整して「サムじぇね」に近づける */
+    margin-top: -5px; /* 上マージンを調整して「サムじぇね」に近づける */
     margin-left: 3px;
 }
 
