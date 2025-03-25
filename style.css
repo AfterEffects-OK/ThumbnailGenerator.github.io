@@ -158,6 +158,17 @@
     z-index: 10; /* キャンバスより前面に表示 */
 }
 
+/* プレビューラベルのスタイル */
+.preview-label2 {
+    position: absolute; /* 絶対位置指定 */
+    top: 50px; /* 上からの位置を調整 */
+    left: 50%; /* 左からの位置を調整 */
+    transform: translateX(-50%); /* 水平方向の中央揃え */
+    font-size: 7px; /* フォントサイズを調整 */
+    color: #5d5d5d; /* 文字色を調整 */
+    z-index: 10; /* キャンバスより前面に表示 */
+}
+
 /* プレビュー領域のスタイル */
 .preview {
     flex: 1; /* プレビュー領域が残りのスペースを埋める */
@@ -218,7 +229,7 @@
 
 .slider-container input[type="range"] {
     flex-grow: 1; /* スライダーが残りのスペースを埋める */
-    width: 230px; /* スライダーの幅を調整 */
+    width: 200px; /* スライダーの幅を調整 */
 }
 
 canvas {
@@ -243,7 +254,7 @@ canvas {
     cursor: pointer; /* カーソルをポインタに変更 */
 }
 
-.drop-area.highlight {
+.drop-area.highlight, .drop-area.drag-over {
     border-color: #007bff;
     background-color: rgba(0, 123, 255, 0.1); /* ハイライト時の背景色 */
 }
@@ -642,6 +653,13 @@ button:hover {
     background-color: #e50606;
 }
 
+/* 動画のリセットボタンとリサイズボタンのコンテナ */
+.video-button-container {
+    flex-direction: column; /* 縦並びにする */
+    gap: 7px; /* ボタン間の間隔を設定 */
+    margin-left: 3px;
+}
+
 /* プリセットボタン */
 .preset-button {
     background-color: #829dff;
@@ -701,6 +719,69 @@ button:hover {
 }
 
 #customLogoEdgeColor::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#videoFrameSlider {
+    width: 200px; /* スライダーの幅を150pxに設定 */
+    margin-bottom: 10px;
+    /* 他のスタイルも必要に応じて追加 */
+}
+
+#videoFrameSliderContainer {
+    width: 200px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+#videoFrameSlider {
+    width: 200px; /* スライダーの幅を150pxに設定 */
+    margin-bottom: 0px;
+    /* 他のスタイルも必要に応じて追加 */
+}
+
+#videoSizeSliderContainer,
+#videoXSliderContainer,
+#videoYSliderContainer {
+    width: 200px;
+}
+
+/* 動画のエッジの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.video-edge-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+    margin-bottom: 5px;
+}
+
+/* 動画のカスタムエッジカラーピッカーのスタイル */
+#customVideoEdgeColor {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    height: 25px;             /* 高さを調整 */
+    width: 50px;              /* 幅を調整 */
+    border: 1px solid #616161; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(234, 234, 234));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* 動画のエッジのカラーピッカーのバリュー部分のスタイル */
+#customVideoEdgeColor::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customVideoEdgeColor::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customVideoEdgeColor::-moz-color-swatch {
     border: none; /* 枠線を削除 */
     border-radius: 0%; /* 角を丸くする（円形にする） */
 }

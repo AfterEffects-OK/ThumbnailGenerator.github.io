@@ -18,6 +18,7 @@
         <!-- 素材アップロード、テンプレート選択など -->
         <label><i class="fab fa-youtube"></i><span id="logo-text">サムじぇね</span></label>
         <span id="sub-logo-text">YouTube thumbnail generator</span>
+            <!-- 背景画像 -->
         <label><span class="label-text">画像</span></label>
         <div id="imageDropArea" class="drop-area">
             <label for="imageUpload">画像を選択 または <br>ドラッグ&ドロップ</label>
@@ -40,6 +41,7 @@
         <button id="resetImageButton" class="reset-button">リセット</button>
         <button id="resizeImageButton" class="resize-button">幅1280pxにリサイズ</button>
         <br><br>
+            <!-- ロゴ or 画像 -->
         <label><span class="label-text">ロゴ or 画像</span>
         <div id="logoDropArea" class="drop-area">
             <label for="logoUpload">画像を選択 または <br>ドラッグ&ドロップ</label>
@@ -69,10 +71,59 @@
         <div class="slider-container">
             <label for="logoEdgeWidth">太さ</label>
             <input type="range" id="logoEdgeWidth" min="0" max="30" value="0">
-        </div><br>
+        </div>
+        <br>
+            <!-- 動画フレーム -->
+        <label><span class="label-text">動画</span></label>
+        <div id="videoDropArea" class="drop-area">
+            <label for="videoUpload">動画を選択 または <br>ドラッグ&ドロップ</label>
+            <input type="file" id="videoUpload" accept="video/*" style="display:none;">
+        </div>
+        <div id="videoFrameSliderContainer" class="slider-container" style="display: none;">
+            <label for="videoFrameSlider">フレーム</label>
+            <input type="range" id="videoFrameSlider" min="0" max="100" value="1" step="1">
+        </div>
+        <div id="videoSizeSliderContainer" class="slider-container" style="display: none;">
+            <div class="slider-container">
+                <label for="videoSizeSlider">サイズ</label>
+                <input type="range" id="videoSizeSlider" min="10" max="200" value="100" step="1">
+            </div>
+        </div>
+        <div id="videoXSliderContainer" class="slider-container" style="display: none;">
+            <div class="slider-container">
+                <label for="videoXSlider">X座標</label>
+                <input type="range" id="videoXSlider" min="-500" max="500" value="0" step="1">   
+            </div>
+        </div>
+        <div id="videoYSliderContainer" class="slider-container" style="display: none;">
+            <div class="slider-container">
+                <label for="videoYSlider">Y座標</label>
+                <input type="range" id="videoYSlider" min="-500" max="500" value="0" step="1">
+            </div>
+        </div>
+        <div id="videoEdgeSettings" style="display: none;">
+            <div class="slider-container">
+                <label for="videoEdgeColor">エッジの色</label>
+                <div class="video-edge-color-picker-container">
+                    <input type="color" id="customVideoEdgeColor" value="#000000">
+                </div>
+            </div>
+            <div id="videoEdgeWidthSliderContainer" class="slider-container">
+                <label for="videoEdgeWidthSlider">太さ</label>
+                <input type="range" id="videoEdgeWidthSlider" min="0" max="20" value="0" step="1">
+            </div><br>
+        </div>
+        <div class="video-button-container" style="display: none;">
+            <button id="resetVideoButton" class="reset-button">削除</button>
+            <button id="resizeVideoButton" class="resize-button">幅1280pxにリサイズ</button>
+        </div>
+            <!-- プリセット -->
         <label><span class="label-text">プリセット</span></label>
-        <button id="resetLogoButton" class="reset-button">ロゴをセット</button><button id="presetLogoButton" class="preset-button">サブ画像をセット</button></label>
+        <button id="resetLogoButton" class="reset-button">ロゴをセット</button>
+        <button id="presetLogoButton" class="preset-button">サブ画像をセット</button></label>
+        <button id="presetVideoButton" class="preset-button">動画フレームをセット</button></label>
         <br><br>
+            <!-- ダウンロード -->
         <button2 id="generateButton">ダウンロード</button2><br><br>
         <button2 id="generateCopyButton">画像をコピー</button2>
     </div>
@@ -82,7 +133,9 @@
         <div class="preview">
             <!-- サムネイルプレビュー -->
             <canvas id="thumbnailCanvas" width="1280" height="720"></canvas>
+            <video id="uploadedVideo" style="display: none;"></video>
         </div>
+        <label class="preview-label2">サイズ: 1280x720px (16:9)</label>
     </div>
 
     <div class="settings">
@@ -100,7 +153,12 @@
         <div class="slider-container">
             <label for="textY1">Y座標</label>
             <input type="range" id="textY1" min="0" max="720" value="400">
-        </div><br>
+        </div>
+        <div class="slider-container">
+            <label for="textRotation1">回転</label>
+            <input type="range" id="textRotation1" min="-180" max="180" value="0" step="1">
+        </div>
+        <button id="resetRotationButton1" class="reset-button">回転リセット</button><br>
         
         <label for="fontFamily1">フォント</label>
         <select id="fontFamily1"></select><br>
@@ -208,7 +266,12 @@
         <div class="slider-container">
             <label for="textY2">Y座標</label>
             <input type="range" id="textY2" min="0" max="720" value="600">
-        </div><br>
+        </div>
+        <div class="slider-container">
+            <label for="textRotation2">回転</label>
+            <input type="range" id="textRotation2" min="-180" max="180" value="0" step="1">
+        </div>
+        <button id="resetRotationButton2" class="reset-button">回転リセット</button><br>
         
         <label for="fontFamily2">フォント</label>
         <select id="fontFamily2"></select><br>

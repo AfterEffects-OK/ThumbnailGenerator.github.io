@@ -50,6 +50,10 @@
     const shadowOffsetXInput2 = document.getElementById('shadowOffsetX2'); // 2つ目のテキストのシャドウのXオフセット
     const shadowOffsetYInput2 = document.getElementById('shadowOffsetY2'); // 2つ目のテキストのシャドウのYオフセット
     const shadowColorButtons2 = document.querySelectorAll('.shadow-color-button2'); // 2つ目のテキストのシャドウの色選択ボタン
+    const textRotationSlider1 = document.getElementById('textRotation1'); // 1つ目のテキストの回転角度
+    const textRotationSlider2 = document.getElementById('textRotation2'); // 2つ目のテキストの回転角度
+    const resetRotationButton1 = document.getElementById('resetRotationButton1'); // 1つ目のテキストの回転リセットボタン
+    const resetRotationButton2 = document.getElementById('resetRotationButton2'); // 2つ目のテキストの回転リセットボタン
     // テキストの背景色選択ボタンのイベントリスナー
     const textBackgroundColorButtons1 = document.querySelectorAll('.text-background-color-button1'); // 1つ目のテキストの背景色選択ボタン
     const textBackgroundColorButtons2 = document.querySelectorAll('.text-background-color-button2'); // 2つ目のテキストの背景色選択ボタン
@@ -68,6 +72,27 @@
     const imageXInput = document.getElementById('imageX');
     const imageYInput = document.getElementById('imageY');
     const resizeImageButton = document.getElementById('resizeImageButton');
+    // 動画関連の要素を取得
+    const videoDropArea = document.getElementById('videoDropArea');
+    const videoUpload = document.getElementById('videoUpload');
+    const videoFrameSliderContainer = document.getElementById('videoFrameSliderContainer');
+    const videoFrameSlider = document.getElementById('videoFrameSlider');
+    const resetVideoButton = document.getElementById('resetVideoButton');
+    const uploadedVideo = document.getElementById('uploadedVideo');
+    const videoSizeSliderContainer = document.getElementById('videoSizeSliderContainer');
+    const videoSizeSlider = document.getElementById('videoSizeSlider');
+    const videoXSliderContainer = document.getElementById('videoXSliderContainer');
+    const videoXSlider = document.getElementById('videoXSlider');
+    const videoYSliderContainer = document.getElementById('videoYSliderContainer');
+    const videoYSlider = document.getElementById('videoYSlider');
+    const videoEdgeSettings = document.getElementById('videoEdgeSettings');
+    const customVideoEdgeColor = document.getElementById('customVideoEdgeColor');
+    const videoEdgeWidthSliderContainer = document.getElementById('videoEdgeWidthSliderContainer');
+    const videoEdgeWidthSlider = document.getElementById('videoEdgeWidthSlider');
+    // 動画のリセットボタンとリサイズボタンのコンテナを取得
+    const videoButtonContainer = document.querySelector('.video-button-container');
+    // 動画のリサイズボタンを取得
+    const resizeVideoButton = document.getElementById('resizeVideoButton');    
     // ロゴのスケールと位置調整用のスライダーを取得
     const logoScaleInput = document.getElementById('logoScale');
     const logoXInput = document.getElementById('logoX');
@@ -88,6 +113,8 @@
     let textX2 = 50; // 2つ目のテキストのX座標
     let textY1 = 400; // 1つ目のテキストのY座標
     let textY2 = 600; // 2つ目のテキストのY座標
+    let textRotation1 = 0; // 1つ目のテキストの回転角度の初期値
+    let textRotation2 = 0; // 2つ目のテキストの回転角度の初期値
     let textColor1 = 'white'; // 1つ目のテキストの色の初期値
     let textColor2 = '#ff8800'; // 2つ目のテキストの色の初期値
     let fontFamily1 = 'Dela Gothic One'; // 1つ目のテキストのフォントの初期値
@@ -131,6 +158,14 @@
     let logoY = 10; // ロゴのY座標の初期値
     let logoEdgeColor = 'black'; // ロゴのエッジの色の初期値
     let logoEdgeWidth = 0; // ロゴのエッジの太さの初期値
+    // 動画のフレームとスケールと位置を保持する変数を追加
+    let currentVideoFrame = 1; // 現在の動画フレームを保持する変数
+    let videoScale = 1.0; // 動画のスケールを保持する変数
+    let videoX = 0; // 動画のX座標を保持する変数
+    let videoY = 0; // 動画のY座標を保持する変数
+    let videoEdgeColor = '#000000'; // 動画のエッジの色を保持する変数
+    let videoEdgeWidth = 0; // 動画のエッジの太さを保持する変数
+    let isVideoWidthResizeMode = true; // 幅リサイズモードが初期値
 
     // 利用可能なフォントのリスト
     const fontList = [
@@ -272,6 +307,142 @@
         handleLogoUpload(e);
     });
 
+    // 動画のアップロード処理
+function handleVideoFiles(files) {
+    ([...files]).forEach(file => {
+        const fileType = file.type;
+        if (fileType.startsWith('video/')) {
+            uploadedVideo.src = URL.createObjectURL(file);
+            redrawCanvas(); // 追加：動画のsrcが設定された直後にredrawCanvasを呼び出す
+            uploadedVideo.loop = true;
+            uploadedVideo.muted = true;
+            uploadedVideo.load();
+
+            uploadedVideo.addEventListener('loadedmetadata', () => {
+                // スライダーの最大値を動画のフレーム数に設定
+                videoFrameSlider.max = Math.floor(uploadedVideo.duration * 30); // 30fpsとして計算
+                videoFrameSliderContainer.style.display = 'block';
+                videoSizeSliderContainer.style.display = 'block'; // 追加
+                videoXSliderContainer.style.display = 'block'; // 追加
+                videoYSliderContainer.style.display = 'block'; // 追加
+                videoEdgeSettings.style.display = 'block'; // 追加
+                videoButtonContainer.style.display = 'flex';
+                redrawCanvas();
+            });
+
+            uploadedVideo.addEventListener('seeked', () => {
+                redrawCanvas();
+            });
+        }
+    });
+}
+    
+    // 動画フレームスライダーの変更イベント
+    videoFrameSlider.addEventListener('input', () => {
+        currentVideoFrame = parseInt(videoFrameSlider.value);
+        uploadedVideo.currentTime = currentVideoFrame / 30; // 30fpsとして計算
+    });
+
+    // 動画サイズスライダーの変更イベント
+    videoSizeSlider.addEventListener('input', () => {
+        videoScale = parseFloat(videoSizeSlider.value) / 100;
+        redrawCanvas();
+    });
+    
+    // 動画X座標スライダーの変更イベント
+    videoXSlider.addEventListener('input', () => {
+        videoX = parseInt(videoXSlider.value);
+        redrawCanvas();
+    });
+    
+    // 動画Y座標スライダーの変更イベント
+    videoYSlider.addEventListener('input', () => {
+        videoY = parseInt(videoYSlider.value);
+        redrawCanvas();
+    });
+    
+    // 動画エッジカラーピッカーの変更イベント
+    customVideoEdgeColor.addEventListener('input', () => {
+        videoEdgeColor = customVideoEdgeColor.value;
+        redrawCanvas();
+    });
+    
+    // 動画エッジ幅スライダーの変更イベント
+    videoEdgeWidthSlider.addEventListener('input', () => {
+        videoEdgeWidth = parseInt(videoEdgeWidthSlider.value);
+        redrawCanvas();
+    });
+    
+    // 動画リセットボタンのクリックイベント
+    resetVideoButton.addEventListener('click', () => {
+        uploadedVideo.src = '';
+        videoFrameSliderContainer.style.display = 'none';
+        videoSizeSliderContainer.style.display = 'none'; // 追加
+        videoXSliderContainer.style.display = 'none'; // 追加
+        videoYSliderContainer.style.display = 'none'; // 追加
+        videoEdgeSettings.style.display = 'none'; // 追加
+        videoButtonContainer.style.display = 'none';
+        currentVideoFrame = 0;
+        videoScale = 1.0;
+        videoX = 0;
+        videoY = 0;
+        videoEdgeColor = '#000000';
+        videoEdgeWidth = 0;
+        redrawCanvas();
+    });
+
+    // 動画のドロップエリアのイベント
+    videoDropArea.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.add('drag-over');
+    });
+
+    videoDropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    videoDropArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.remove('drag-over');
+    });
+
+    videoDropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.remove('drag-over');
+        handleVideoFiles(e.dataTransfer.files);
+    });
+
+    // 動画のファイル選択イベント
+    videoUpload.addEventListener('change', (e) => {
+        handleVideoFiles(e.target.files);
+    });
+
+    // 動画のドロップエリアのイベント
+    videoDropArea.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.add('drag-over');
+        videoDropArea.classList.add('highlight');
+    });
+
+    videoDropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.add('drag-over');
+        videoDropArea.classList.add('highlight');
+    });
+
+    videoDropArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.remove('drag-over');
+        videoDropArea.classList.remove('highlight');
+    });
+
+    videoDropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        videoDropArea.classList.remove('drag-over');
+        videoDropArea.classList.remove('highlight');
+        handleVideoFiles(e.dataTransfer.files);
+    });
+    
     // ドラッグオーバー時の処理
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         imageDropArea.addEventListener(eventName, preventDefaults, false);
@@ -440,6 +611,33 @@
     textYInput2.addEventListener('input', (e) => {
         console.log('テキストY座標2変更イベントが発生しました');
         textY2 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+    
+    // テキスト回転角度変更時の処理
+    textRotationSlider1.addEventListener('input', (e) => {
+        console.log('テキスト回転角度1変更イベントが発生しました');
+        textRotation1 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+    textRotationSlider2.addEventListener('input', (e) => {
+        console.log('テキスト回転角度2変更イベントが発生しました');
+        textRotation2 = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // テキスト回転リセットボタンのイベントリスナー
+    resetRotationButton1.addEventListener('click', () => {
+        console.log('テキスト回転リセットボタン1がクリックされました');
+        textRotation1 = 0; // 回転角度を0にリセット
+        textRotationSlider1.value = 0; // スライダーの値を0にリセット
+        redrawCanvas();
+    });
+
+    resetRotationButton2.addEventListener('click', () => {
+        console.log('テキスト回転リセットボタン2がクリックされました');
+        textRotation2 = 0; // 回転角度を0にリセット
+        textRotationSlider2.value = 0; // スライダーの値を0にリセット
         redrawCanvas();
     });
 
@@ -870,7 +1068,7 @@
         redrawCanvas();
     });
     
-    // プリセットボタンのイベントリスナー
+    // ロゴのプリセットボタンのイベントリスナー
     presetLogoButton.addEventListener('click', () => {
         console.log('プリセットボタンがクリックされました');
         logoScale = 4;
@@ -903,6 +1101,88 @@
         
         redrawCanvas();
     });
+    
+    // 動画のプリセットボタンのイベントリスナー
+    presetVideoButton.addEventListener('click', () => {
+        console.log('動画のプリセットボタンがクリックされました');
+        videoScale = videoScale * 0.41;
+        videoEdgeWidth = 15;
+        videoEdgeColor = "rgb(240, 220, 2)";
+        videoX = -25;
+        videoY = 8;
+        textY1 = 490;
+        textY2 = 650;
+        fontSize2 = 85;
+        outerEdgeWidth1 = 16;        
+        outerEdgeColor1 = "#FFFFFF";
+        textBackgroundOpacity2 = 1;
+        textBackgroundHeight2 = -80;
+        textBackgroundColor2 = "green";
+        textBackgroundPadding2 = 20;
+        videoSizeSlider.value = videoScale * 100; // スライダーの値を更新
+        videoXSlider.value = videoX;
+        videoYSlider.value = videoY;
+        videoEdgeWidthSlider.value = videoEdgeWidth;
+        customVideoEdgeColor.value = videoEdgeColor;
+        textYInput1.value = textY1;
+        textYInput2.value = textY2;
+        fontSizeInput2.value = fontSize2;
+        textBackgroundOpacityInput2.value = textBackgroundOpacity2;
+        textBackgroundHeightInput2.value = textBackgroundHeight2;
+        customTextBackgroundColorInput2.value = textBackgroundColor2;
+        textBackgroundPaddingInput2.value = textBackgroundPadding2;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        redrawCanvas();
+    });
+
+    // 動画のリサイズボタンのイベントリスナー
+    resizeVideoButton.addEventListener('click', () => {
+        console.log('動画のリサイズボタンがクリックされました');
+        if (uploadedVideo) {
+            if (isVideoWidthResizeMode) {
+                // 幅1280pxにリサイズ
+                const targetWidth = 1280;
+                const scale = targetWidth / uploadedVideo.videoWidth;
+                videoScale = scale;
+                videoX = 0; // X座標を0に設定
+                videoY = 0; // Y座標を0に設定
+                videoSizeSlider.value = videoScale * 100; // スライダーの値を更新
+                videoXSlider.value = videoX;
+                videoYSlider.value = videoY;
+                resizeVideoButton.textContent = '高さ720pxにリサイズ'; // ボタンのテキストを変更
+                resizeVideoButton.classList.add('height-resize'); // ボタンのクラスを追加
+                isVideoWidthResizeMode = false; // モードを高さリサイズに変更
+            } else if (!isVideoWidthResizeMode && resizeVideoButton.textContent === '高さ720pxにリサイズ') {
+                // 高さ720pxにリサイズ
+                const targetHeight = 720;
+                const scale = targetHeight / uploadedVideo.videoHeight;
+                videoScale = scale;
+                videoX = 0; // X座標を0に設定
+                videoY = 0; // Y座標を0に設定
+                videoSizeSlider.value = videoScale * 100; // スライダーの値を更新
+                videoXSlider.value = videoX;
+                videoYSlider.value = videoY;
+                resizeVideoButton.textContent = '元のサイズに戻す'; // ボタンのテキストを変更
+                resizeVideoButton.classList.remove('height-resize'); // ボタンのクラスを削除
+                isVideoWidthResizeMode = false; // モードを高さリサイズに変更
+            } else {
+                // 元のサイズに戻す
+                videoScale = 1.0; // スケールを1.0に戻す
+                videoX = 0; // X座標を0に設定
+                videoY = 0; // Y座標を0に設定
+                videoSizeSlider.value = videoScale * 100; // スライダーの値を更新
+                videoXSlider.value = videoX;
+                videoYSlider.value = videoY;
+                resizeVideoButton.textContent = '幅1280pxにリサイズ'; // ボタンのテキストを変更
+                resizeVideoButton.classList.remove('height-resize'); // ボタンのクラスを削除
+                isVideoWidthResizeMode = true; // モードを幅リサイズに変更
+            }
+            redrawCanvas();
+        } else {
+            console.log('動画がアップロードされていません');
+            alert('動画をアップロードしてください');
+        }
+    });
 
     // Canvasの再描画
     function redrawCanvas() {
@@ -920,6 +1200,24 @@
             ctx.drawImage(uploadedImage, imageX, imageY, imageWidth, imageHeight);
         } else {
             console.log('画像はまだアップロードされていません');
+        }
+        
+        // 動画がアップロードされている場合、現在のフレームを描画
+        if (uploadedVideo.src) {
+            console.log("動画を描画します");
+            const videoWidth = uploadedVideo.videoWidth * videoScale;
+            const videoHeight = uploadedVideo.videoHeight * videoScale;
+            // drawXとdrawYをここで計算
+            const drawX = (thumbnailCanvas.width - videoWidth) / 2 + videoX;
+            const drawY = (thumbnailCanvas.height - videoHeight) / 2 + videoY;
+
+            // エッジの描画
+            if (videoEdgeWidth > 0) {
+                ctx.strokeStyle = videoEdgeColor;
+                ctx.lineWidth = videoEdgeWidth;
+                ctx.strokeRect(drawX, drawY, videoWidth, videoHeight);
+            }
+            ctx.drawImage(uploadedVideo, drawX, drawY, videoWidth, videoHeight);
         }
 
         // ロゴの描画
@@ -967,9 +1265,15 @@
         if (outerEdgeWidth1 > 0) {
             ctx.strokeStyle = outerEdgeColor1;
             ctx.lineWidth = outerEdgeWidth1;
+            // 回転の中心を設定
+            ctx.translate(textX1, textY1);
+            // テキストを回転
+            ctx.rotate(textRotation1 * Math.PI / 180);
             textLines1.forEach((line, index) => {
-                ctx.strokeText(line, textX1, textY1 + index * lineHeight1);
+                ctx.strokeText(line, 0, index * lineHeight1);
             });
+            // 回転をリセット
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
         }
         // シャドウのリセット
         ctx.shadowColor = 'transparent';
@@ -980,14 +1284,27 @@
         if (edgeWidth1 > 0) {
             ctx.strokeStyle = edgeColor1;
             ctx.lineWidth = edgeWidth1;
+            // 回転の中心を設定
+            ctx.translate(textX1, textY1);
+            // テキストを回転
+            ctx.rotate(textRotation1 * Math.PI / 180);
             textLines1.forEach((line, index) => {
-                ctx.strokeText(line, textX1, textY1 + index * lineHeight1);
+                ctx.strokeText(line, 0, index * lineHeight1);
             });
+            // 回転をリセット
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
         }
         ctx.fillStyle = textColor1; // テキストの色を設定
+        // 回転の中心を設定
+        ctx.translate(textX1, textY1);
+        // テキストを回転
+        ctx.rotate(textRotation1 * Math.PI / 180);
         textLines1.forEach((line, index) => {
-            ctx.fillText(line, textX1, textY1 + index * lineHeight1);
+            ctx.fillText(line, 0, index * lineHeight1);
         });
+        // 回転をリセット
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+
         // テキスト2の背景を描画
         ctx.fillStyle = textBackgroundColor2;
         ctx.globalAlpha = textBackgroundOpacity2;
@@ -1014,9 +1331,15 @@
         if (outerEdgeWidth2 > 0) {
             ctx.strokeStyle = outerEdgeColor2;
             ctx.lineWidth = outerEdgeWidth2;
+            // 回転の中心を設定
+            ctx.translate(textX2, textY2);
+            // テキストを回転
+            ctx.rotate(textRotation2 * Math.PI / 180);
             textLines2.forEach((line, index) => {
-                ctx.strokeText(line, textX2, textY2 + index * lineHeight2);
+                ctx.strokeText(line, 0, index * lineHeight2);
             });
+            // 回転をリセット
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
         }
         // シャドウのリセット
         ctx.shadowColor = 'transparent';
@@ -1027,14 +1350,26 @@
         if (edgeWidth2 > 0) {
             ctx.strokeStyle = edgeColor2;
             ctx.lineWidth = edgeWidth2;
+            // 回転の中心を設定
+            ctx.translate(textX2, textY2);
+            // テキストを回転
+            ctx.rotate(textRotation2 * Math.PI / 180);
             textLines2.forEach((line, index) => {
-                ctx.strokeText(line, textX2, textY2 + index * lineHeight2);
+                ctx.strokeText(line, 0, index * lineHeight2);
             });
+            // 回転をリセット
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
         }
         ctx.fillStyle = textColor2; // テキストの色を設定
+        // 回転の中心を設定
+        ctx.translate(textX2, textY2);
+        // テキストを回転
+        ctx.rotate(textRotation2 * Math.PI / 180);
         textLines2.forEach((line, index) => {
-            ctx.fillText(line, textX2, textY2 + index * lineHeight2);
+            ctx.fillText(line, 0, index * lineHeight2);
         });
+        // 回転をリセット
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
     // ウィンドウのリサイズイベントを監視
     window.addEventListener('resize', () => {
@@ -1052,6 +1387,12 @@
             thumbnailCanvas.style.height = `${previewWidth / aspectRatio}px`;
         }
 
+        redrawCanvas();
+    });
+
+    // DOMContentLoaded イベントで redrawCanvas() を呼び出す
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded イベントが発生しました');
         redrawCanvas();
     });
 
