@@ -1081,10 +1081,19 @@ function handleVideoFiles(files) {
         fontSize2 = 85;
         outerEdgeWidth1 = 16;        
         outerEdgeColor1 = "#FFFFFF";
+        outerEdgeWidth2 = 10;        
         textBackgroundOpacity2 = 1;
         textBackgroundHeight2 = -80;
         textBackgroundColor2 = "green";
         textBackgroundPadding2 = 20;
+        shadowColor1 = 'red';
+        shadowBlur1 = 30;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        shadowColor2 = 'black';
+        shadowBlur2 = 5;
+        shadowOffsetX2 = 5;
+        shadowOffsetY2 = 3;
         logoScaleInput.value = logoScale;
         logoXInput.value = logoX;
         logoYInput.value = logoY;
@@ -1093,11 +1102,22 @@ function handleVideoFiles(files) {
         textYInput1.value = textY1;
         textYInput2.value = textY2;
         fontSizeInput2.value = fontSize2;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
         textBackgroundOpacityInput2.value = textBackgroundOpacity2;
         textBackgroundHeightInput2.value = textBackgroundHeight2;
         customTextBackgroundColorInput2.value = textBackgroundColor2;
         textBackgroundPaddingInput2.value = textBackgroundPadding2;
         customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
         
         redrawCanvas();
     });
@@ -1114,11 +1134,20 @@ function handleVideoFiles(files) {
         textY2 = 650;
         fontSize2 = 85;
         outerEdgeWidth1 = 16;        
-        outerEdgeColor1 = "#FFFFFF";
+        outerEdgeColor1 = "#FFFFFF";        
+        outerEdgeWidth2 = 15;
         textBackgroundOpacity2 = 1;
         textBackgroundHeight2 = -80;
         textBackgroundColor2 = "green";
         textBackgroundPadding2 = 20;
+        shadowColor1 = 'red';
+        shadowBlur1 = 30;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        shadowColor2 = 'black';
+        shadowBlur2 = 8;
+        shadowOffsetX2 = 12;
+        shadowOffsetY2 = -5;
         videoSizeSlider.value = videoScale * 100; // スライダーの値を更新
         videoXSlider.value = videoX;
         videoYSlider.value = videoY;
@@ -1127,11 +1156,21 @@ function handleVideoFiles(files) {
         textYInput1.value = textY1;
         textYInput2.value = textY2;
         fontSizeInput2.value = fontSize2;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
         textBackgroundOpacityInput2.value = textBackgroundOpacity2;
         textBackgroundHeightInput2.value = textBackgroundHeight2;
         customTextBackgroundColorInput2.value = textBackgroundColor2;
         textBackgroundPaddingInput2.value = textBackgroundPadding2;
         customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
         redrawCanvas();
     });
 
@@ -1261,6 +1300,25 @@ function handleVideoFiles(files) {
         ctx.shadowBlur = shadowBlur1;
         ctx.shadowOffsetX = shadowOffsetX1;
         ctx.shadowOffsetY = shadowOffsetY1;
+        
+        // テキスト1のシャドウを描画（テキストと同じ色で描画）
+        ctx.fillStyle = shadowColor1; // シャドウの色で塗りつぶす
+        // 回転の中心を設定
+        ctx.translate(textX1, textY1);
+        // テキストを回転
+        ctx.rotate(textRotation1 * Math.PI / 180);
+        textLines1.forEach((line, index) => {
+            ctx.fillText(line, 0, index * lineHeight1);
+        });
+        // 回転をリセット
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        
+        // シャドウのリセット
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+
         // 外側のエッジの描画
         if (outerEdgeWidth1 > 0) {
             ctx.strokeStyle = outerEdgeColor1;
@@ -1280,6 +1338,7 @@ function handleVideoFiles(files) {
         ctx.shadowBlur = 0;
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
+
         // エッジの描画
         if (edgeWidth1 > 0) {
             ctx.strokeStyle = edgeColor1;
@@ -1322,11 +1381,32 @@ function handleVideoFiles(files) {
         const backgroundY2 = textY2 - lineHeight2;
         ctx.fillRect(backgroundX2, backgroundY2 - textBackgroundPadding2 - textBackgroundHeight2, textBackgroundWidth2 + backgroundWidth2, textHeight2 + textBackgroundPadding2 * 2 + textBackgroundHeight2);
         ctx.globalAlpha = 1.0; // 不透明度をリセット
+        
         // シャドウの設定
         ctx.shadowColor = shadowColor2;
         ctx.shadowBlur = shadowBlur2;
         ctx.shadowOffsetX = shadowOffsetX2;
         ctx.shadowOffsetY = shadowOffsetY2;
+        
+        
+        // テキスト2のシャドウを描画（テキストと同じ色で描画）
+        ctx.fillStyle = shadowColor2; // シャドウの色で塗りつぶす
+        // 回転の中心を設定
+        ctx.translate(textX2, textY2);
+        // テキストを回転
+        ctx.rotate(textRotation2 * Math.PI / 180);
+        textLines2.forEach((line, index) => {
+            ctx.fillText(line, 0, index * lineHeight2);
+        });
+        // 回転をリセット
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        
+        // シャドウのリセット
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+
         // 外側のエッジの描画
         if (outerEdgeWidth2 > 0) {
             ctx.strokeStyle = outerEdgeColor2;
@@ -1346,6 +1426,7 @@ function handleVideoFiles(files) {
         ctx.shadowBlur = 0;
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
+
         // エッジの描画
         if (edgeWidth2 > 0) {
             ctx.strokeStyle = edgeColor2;
@@ -1562,5 +1643,31 @@ function handleVideoFiles(files) {
         }
         redrawCanvas();
     });
+    
+
+    // テキストのグラデーションを適用する関数
+    function applyTextGradient(ctx, text, x, y, fontSize, fontFamily, startColor, endColor, rotation) {
+        ctx.font = `${fontSize}px ${fontFamily}`;
+        const textMetrics = ctx.measureText(text);
+        const textWidth = textMetrics.width;
+        const textHeight = fontSize; // 簡易的にフォントサイズを高さとする
+
+        // グラデーションの作成
+        const gradient = ctx.createLinearGradient(x, y - textHeight, x, y);
+        gradient.addColorStop(0, startColor); // 上部の色
+        gradient.addColorStop(1, endColor);   // 下部の色
+
+        // グラデーションをfillStyleに設定
+        ctx.fillStyle = gradient;
+
+        // 回転の中心を設定
+        ctx.translate(x, y);
+        // テキストを回転
+        ctx.rotate(rotation * Math.PI / 180);
+        // テキストを描画
+        ctx.fillText(text, 0, 0);
+        // 回転をリセット
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
     // JavaScript コード (ここまで)
 })();
