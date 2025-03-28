@@ -184,6 +184,7 @@
         { name: 'GN-KillGothic-U-KanaNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
         { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
         { name: 'KTEGAKI', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
+        { name: '851MkPOP_101', value: "'851MkPOP_101', sans-serif", isBold: false }, // 851MkPOP_101を追加
         { name: 'GenEiPOPlePw-Bk', value: "'GenEiPOPlePw-Bk', sans-serif", isBold: false }, // GenEiPOPlePw-Bkを追加
         { name: 'GenEiLateGoP_v2', value: "'GenEiLateGoP_v2', sans-serif", isBold: false }, // GenEiLateGoP_v2を追加
         { name: 'GenEiLateMinP_v2', value: "'GenEiLateMinP_v2', sans-serif", isBold: false }, // GenEiLateMinP_v2を追加
