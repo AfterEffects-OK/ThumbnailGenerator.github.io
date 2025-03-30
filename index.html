@@ -18,6 +18,7 @@
         <!-- 素材アップロード、テンプレート選択など -->
         <label><i class="fab fa-youtube"></i><span id="logo-text">サムじぇね</span></label>
         <span id="sub-logo-text">YouTube thumbnail generator</span>
+    <div class="setting-section">
             <!-- 背景画像 -->
         <label><span class="label-text">画像</span></label>
         <div id="imageDropArea" class="drop-area">
@@ -40,7 +41,8 @@
         </div>
         <button id="resetImageButton" class="reset-button">リセット</button>
         <button id="resizeImageButton" class="resize-button">幅1280pxにリサイズ</button>
-        <br>
+    </div>
+    <div class="setting-section">
             <!-- ロゴ or 画像 -->
         <label><span class="label-text">ロゴ or 画像</span>
         <div id="logoDropArea" class="drop-area">
@@ -103,8 +105,8 @@
                 <input type="range" id="logoShadowOffsetY" min="-50" max="50" value="1">
             </div>
             <button id="resetLogoShadowButton" class="shadow-reset-button">シャドウなし</button>
-            <br><br>
         </div>
+    </div>
             <!-- 動画フレーム -->
         <label><span class="label-text">動画</span></label>
         <div id="videoDropArea" class="drop-area">

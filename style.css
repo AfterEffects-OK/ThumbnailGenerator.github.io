@@ -216,7 +216,7 @@
 }
 
 .logo-slider-label {
-    font-size: 16px; /* 必要に応じて個別にフォントサイズを調整します */
+    font-size: 14px; /* 必要に応じて個別にフォントサイズを調整します */
     display: block;
     margin-bottom: 0px;
 }
@@ -585,7 +585,7 @@ button:hover {
 /* 項目名（ラベル）のスタイル */
 .label-text {
     font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントを丸ゴシック体に指定 */
-    font-size: 18px; /* フォントサイズを指定 */
+    font-size: 16px; /* フォントサイズを指定 */
     font-weight: bold; /* 太字にするかどうか */
     color: #333; /* 文字色を指定 */
     display: block; /* ブロック要素にする */
@@ -906,4 +906,11 @@ button:hover {
 #customVideoEdgeColor::-moz-color-swatch {
     border: none; /* 枠線を削除 */
     border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+/* 設定項目の区切り線 */
+.setting-section {
+    border-bottom: 1px solid #ccc; /* 下側に区切り線を追加 */
+    padding-bottom: 6px; /* 下側にパディングを追加して間隔を調整 */
+    margin-bottom: 6px; /* 下側にマージンを追加して間隔を調整 */
 }
