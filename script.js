@@ -4,6 +4,16 @@
     // HTML要素の取得
     const imageUpload = document.getElementById('imageUpload');
     const logoUpload = document.getElementById('logoUpload');
+    // ロゴのシャドウ設定用の要素を取得
+    const showLogoShadowSettingsCheckbox = document.getElementById('showLogoShadowSettingsCheckbox'); // ロゴのシャドウの表示/非表示を切り替えるチェックボックス
+    const logoShadowSettingsDiv = document.getElementById('logoShadowSettings'); // ロゴのシャドウの設定項目を囲むdiv
+    const logoShadowColorButtons = document.querySelectorAll('.logo-shadow-color-button'); // ロゴのシャドウの色選択ボタン
+    const customLogoShadowColorInput = document.getElementById('customLogoShadowColor'); // ロゴのカスタムシャドウカラーピッカー
+    const logoShadowBlurInput = document.getElementById('logoShadowBlur'); // ロゴのシャドウのぼかし
+    const logoShadowOffsetXInput = document.getElementById('logoShadowOffsetX'); // ロゴのシャドウのXオフセット
+    const logoShadowOffsetYInput = document.getElementById('logoShadowOffsetY'); // ロゴのシャドウのYオフセット
+    const showLogoEdgeSettingsCheckbox = document.getElementById('showLogoEdgeSettingsCheckbox'); // ロゴのエッジの表示/非表示を切り替えるチェックボックス
+    const logoEdgeSettingsDiv = document.getElementById('logoEdgeSettings'); // ロゴのエッジの設定項目を囲むdiv
     const textInput1 = document.getElementById('textInput1'); // 1つ目のテキスト入力欄
     const textInput2 = document.getElementById('textInput2'); // 2つ目のテキスト入力欄
     const generateButton = document.getElementById('generateButton');
@@ -36,6 +46,8 @@
     const customShadowColorInput1 = document.getElementById('customShadowColor1'); // 1つ目のテキストのカスタムシャドウカラーピッカー
     const showShadowSettingsCheckbox1 = document.getElementById('showShadowSettings1'); // シャドウ設定の表示/非表示を切り替えるチェックボックス
     const shadowSettingsDiv1 = document.getElementById('shadowSettings1'); // シャドウ設定項目を囲むdiv
+    const showTextBackgroundSettingsCheckbox1 = document.getElementById('showTextBackgroundSettings1'); // テキスト背景の表示/非表示を切り替えるチェックボックス
+    const textBackgroundSettingsDiv1 = document.getElementById('textBackgroundSettings1'); // テキスト背景設定項目を囲むdiv
     const shadowBlurInput1 = document.getElementById('shadowBlur1'); // 1つ目のテキストのシャドウのぼかし
     const shadowOffsetXInput1 = document.getElementById('shadowOffsetX1'); // 1つ目のテキストのシャドウのXオフセット
     const shadowOffsetYInput1 = document.getElementById('shadowOffsetY1'); // 1つ目のテキストのシャドウのYオフセット
@@ -54,6 +66,9 @@
     const textRotationSlider2 = document.getElementById('textRotation2'); // 2つ目のテキストの回転角度
     const resetRotationButton1 = document.getElementById('resetRotationButton1'); // 1つ目のテキストの回転リセットボタン
     const resetRotationButton2 = document.getElementById('resetRotationButton2'); // 2つ目のテキストの回転リセットボタン
+    const showStylePanel = document.getElementById('showStylePanel'); // スタイルパネルの表示/非表示を切り替えるチェックボックス
+    const textPresetPanel = document.getElementById('textPresetPanel'); // スタイルプリセットパネルを囲むdiv
+    const showStylePanelButton = document.getElementById('showStylePanelButton');
     // テキストの背景色選択ボタンのイベントリスナー
     const textBackgroundColorButtons1 = document.querySelectorAll('.text-background-color-button1'); // 1つ目のテキストの背景色選択ボタン
     const textBackgroundColorButtons2 = document.querySelectorAll('.text-background-color-button2'); // 2つ目のテキストの背景色選択ボタン
@@ -99,12 +114,18 @@
     const logoYInput = document.getElementById('logoY');
     const resetImageButton = document.getElementById('resetImageButton');
     const resetLogoButton = document.getElementById('resetLogoButton');
+    const resetLogoShadowButton = document.getElementById('resetLogoShadowButton');
     const logoEdgeColorButtons = document.querySelectorAll('.logo-edge-color-button'); // ロゴのエッジの色選択ボタン
     const customLogoEdgeColorInput = document.getElementById('customLogoEdgeColor'); // ロゴのカスタムエッジカラーピッカー
     const logoEdgeWidthInput = document.getElementById('logoEdgeWidth'); // ロゴのエッジの太さ
     
     let uploadedImage = null;
     let uploadedLogo = null;
+    let logoShadowColor = 'black'; // ロゴのシャドウの色の初期値
+    let logoShadowBlur = 1; // ロゴのシャドウのぼかしの初期値
+    let logoShadowOffsetX = 1; // ロゴのシャドウのXオフセットの初期値
+    let logoShadowOffsetY = 1; // ロゴのシャドウのYオフセットの初期値
+    logoShadowSettingsDiv.style.display = 'none'; // 初期状態でロゴのシャドウ設定を非表示にする
     let text1 = ''; // 1つ目のテキスト
     let text2 = ''; // 2つ目のテキスト
     let fontSize1 = 120; // 1つ目のテキストのフォントサイズ
@@ -129,6 +150,9 @@
     let outerEdgeWidth2 = 0; // 2つ目のテキストの外側エッジの太さの初期値
     shadowSettingsDiv1.style.display = 'none'; // 初期状態でシャドウ設定を非表示にする
     shadowSettingsDiv2.style.display = 'none'; // 初期状態でシャドウ設定を非表示にする
+    textBackgroundSettingsDiv1.style.display = 'none'; // 初期状態でテキスト背景設定を非表示にする
+    logoEdgeSettingsDiv.style.display = 'none'; // 初期状態でロゴのエッジ設定を非表示にする
+    textPresetPanel.style.display = 'none'; // 初期状態でスタイルプリセットパネルを非表示にする
     let shadowColor1 = 'black'; // 1つ目のテキストのシャドウの色の初期値
     let shadowBlur1 = 0; // 1つ目のテキストのシャドウのぼかしの初期値
     let shadowOffsetX1 = 0; // 1つ目のテキストのシャドウのXオフセットの初期値
@@ -561,6 +585,64 @@ function handleVideoFiles(files) {
         });
     }
 
+    // ロゴのエッジ設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showLogoEdgeSettingsCheckbox.addEventListener('change', (e) => {
+        console.log('ロゴのエッジ設定の表示/非表示チェックボックスが変更されました');
+        if (e.target.checked) {
+            logoEdgeSettingsDiv.style.display = 'block'; // 表示
+        } else {
+            logoEdgeSettingsDiv.style.display = 'none'; // 非表示
+        }
+    });
+
+
+    // ロゴのシャドウ設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showLogoShadowSettingsCheckbox.addEventListener('change', (e) => {
+        console.log('ロゴのシャドウ設定の表示/非表示チェックボックスが変更されました');
+        if (e.target.checked) {
+            logoShadowSettingsDiv.style.display = 'block'; // 表示
+        } else {
+            logoShadowSettingsDiv.style.display = 'none'; // 非表示
+        }
+    });
+
+    // ロゴのシャドウの色選択ボタンのイベントリスナー
+    logoShadowColorButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('ロゴのシャドウの色選択ボタンがクリックされました');
+            logoShadowColor = e.target.dataset.color;
+            redrawCanvas();
+        });
+    });
+
+    // ロゴのカスタムシャドウカラーピッカーのイベントリスナー
+    customLogoShadowColorInput.addEventListener('change', (e) => {
+        console.log('ロゴのカスタムシャドウカラーピッカーの値が変更されました');
+        logoShadowColor = e.target.value;
+        redrawCanvas();
+    });
+
+    // ロゴのシャドウのぼかし変更時のイベントリスナー
+    logoShadowBlurInput.addEventListener('input', (e) => {
+        console.log('ロゴのシャドウのぼかし変更イベントが発生しました');
+        logoShadowBlur = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴのシャドウのXオフセット変更時のイベントリスナー
+    logoShadowOffsetXInput.addEventListener('input', (e) => {
+        console.log('ロゴのシャドウのXオフセット変更イベントが発生しました');
+        logoShadowOffsetX = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴのシャドウのYオフセット変更時のイベントリスナー
+    logoShadowOffsetYInput.addEventListener('input', (e) => {
+        console.log('ロゴのシャドウのYオフセット変更イベントが発生しました');
+        logoShadowOffsetY = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
     // テキスト入力時の処理
     textInput1.addEventListener('input', (e) => {
         console.log('テキスト1入力イベントが発生しました');
@@ -848,6 +930,16 @@ function handleVideoFiles(files) {
         redrawCanvas();
     });
 
+    // テキストの背景設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showTextBackgroundSettingsCheckbox1.addEventListener('change', (e) => {
+        console.log('テキストの背景設定の表示/非表示チェックボックス1が変更されました');
+        if (e.target.checked) {
+            textBackgroundSettingsDiv1.style.display = 'block'; // 表示
+        } else {
+            textBackgroundSettingsDiv1.style.display = 'none'; // 非表示
+        }
+    });
+
     // テキストの背景色選択ボタンのイベントリスナー
     textBackgroundColorButtons1.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -1027,6 +1119,22 @@ function handleVideoFiles(files) {
         redrawCanvas();
     });
 
+    // スタイルパネルの表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showStylePanel.addEventListener('change', (e) => {
+        console.log('スタイルパネルの表示/非表示チェックボックスが変更されました');
+        if (e.target.checked) {
+            textPresetPanel.style.display = 'block'; // 表示
+        } else {
+            textPresetPanel.style.display = 'none'; // 非表示
+        }
+    });
+    // スタイルパネルの表示/非表示を切り替えるボタンのイベントリスナー
+    showStylePanelButton.addEventListener('click', () => {
+        const isChecked = !showStylePanelButton.classList.contains('active');
+        showStylePanelButton.classList.toggle('active', isChecked);
+        textPresetPanel.style.display = isChecked ? 'block' : 'none';
+    });
+
     // 画像のリセットボタンのイベントリスナー
     resetImageButton.addEventListener('click', () => {
         console.log('画像のリセットボタンがクリックされました');
@@ -1047,28 +1155,26 @@ function handleVideoFiles(files) {
         logoY = 10;
         logoEdgeWidth = 0;
         logoEdgeColor = "rgb(255, 255, 255)"
-        textY1 = 400;
-        textY2 = 600;
-        fontSize2 = 90;
-        outerEdgeWidth1 = 13;    
-        textBackgroundOpacity2 = 0;
-        textBackgroundHeight2 = -30;
-        textBackgroundPadding2 = 10;
         logoScaleInput.value = logoScale;
         logoXInput.value = logoX;
         logoYInput.value = logoY;
         logoEdgeWidthInput.value = logoEdgeWidth;
         customLogoEdgeColorInput.value = logoEdgeColor;
-        textYInput1.value = textY1;
-        textYInput2.value = textY2;
-        fontSizeInput2.value = fontSize2;
-        textBackgroundOpacityInput2.value = textBackgroundOpacity2;
-        textBackgroundHeightInput2.value = textBackgroundHeight2;
-        textBackgroundPaddingInput2.value = textBackgroundPadding2;
-        customOuterEdgeColorInput1.value = outerEdgeColor1;
         redrawCanvas();
     });
     
+    // ロゴのシャドウのリセットボタンのイベントリスナー
+    resetLogoShadowButton.addEventListener('click', () => {
+        console.log('ロゴのリセットボタンがクリックされました');
+        logoShadowBlur = 0;
+        logoShadowOffsetX = 0;
+        logoShadowOffsetY = 0;
+        logoShadowBlurInput.value = logoShadowBlur;
+        logoShadowOffsetXInput.value = logoShadowOffsetX;
+        logoShadowOffsetYInput.value = logoShadowOffsetY;
+        redrawCanvas();
+    });
+
     // ロゴのプリセットボタンのイベントリスナー
     presetLogoButton.addEventListener('click', () => {
         console.log('プリセットボタンがクリックされました');
@@ -1126,11 +1232,11 @@ function handleVideoFiles(files) {
     // 動画のプリセットボタンのイベントリスナー
     presetVideoButton.addEventListener('click', () => {
         console.log('動画のプリセットボタンがクリックされました');
-        videoScale = videoScale * 0.41;
+        videoScale = videoScale * 0.62;
         videoEdgeWidth = 15;
         videoEdgeColor = "rgb(240, 220, 2)";
-        videoX = -25;
-        videoY = 8;
+        videoX = -195;
+        videoY = -65;
         textY1 = 490;
         textY2 = 650;
         fontSize2 = 85;
@@ -1224,6 +1330,378 @@ function handleVideoFiles(files) {
         }
     });
 
+    // タイトル／テキストプリセットボタンのイベントリスナー
+    // タイトルデフォルト
+    textPresetButtonA0.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(255, 255, 255)";
+        edgeWidth1 = 13;
+        edgeColor1 = "rgb(244, 5, 5)";
+        outerEdgeWidth1 = 14;        
+        outerEdgeColor1 = "rgb(255, 255, 255)";
+        shadowColor1 = "rgb(255, 255, 255)";
+        shadowBlur1 = 0;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+    // タイトル１
+    textPresetButtonA1.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(255, 255, 255)";
+        edgeWidth1 = 15;
+        edgeColor1 = "rgb(240, 6, 2)";
+        outerEdgeWidth1 = 26;        
+        outerEdgeColor1 = "rgb(255, 215, 15)";
+        shadowColor1 = 'red';
+        shadowBlur1 = 0;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });    
+    // タイトル２
+    textPresetButtonA2.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(255, 255, 255)";
+        edgeWidth1 = 0;
+        edgeColor1 = "rgb(240, 6, 2)";
+        outerEdgeWidth1 = 0;        
+        outerEdgeColor1 = "rgb(255, 215, 15)";
+        shadowColor1 = 'black';
+        shadowBlur1 = 20;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+    // タイトル３
+    textPresetButtonA3.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(224, 7, 7)";
+        edgeWidth1 = 8;
+        edgeColor1 = "rgb(255, 255, 255)";
+        outerEdgeWidth1 = 20;        
+        outerEdgeColor1 = "rgb(253, 39, 39)";
+        shadowColor1 = "rgb(224, 7, 7)";
+        shadowBlur1 = 0;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+    // タイトル４
+    textPresetButtonA4.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(255, 255, 255)";
+        edgeWidth1 = 1;
+        edgeColor1 = "rgb(0, 0, 0)";
+        outerEdgeWidth1 = 0;        
+        outerEdgeColor1 = "rgb(255, 255, 255)";
+        shadowColor1 = 'black';
+        shadowBlur1 = 5;
+        shadowOffsetX1 = 5;
+        shadowOffsetY1 = 5;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+    // タイトル５
+    textPresetButtonA5.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(253, 173, 1)";
+        edgeWidth1 = 16;
+        edgeColor1 = "rgb(255, 255, 255)";
+        outerEdgeWidth1 = 17;        
+        outerEdgeColor1 = "rgb(107, 57, 0)";
+        shadowColor1 = "rgb(107, 57, 0)";
+        shadowBlur1 = 5;
+        shadowOffsetX1 = 12;
+        shadowOffsetY1 = 12;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+    // タイトル６
+    textPresetButtonA6.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(253, 232, 1)";
+        edgeWidth1 = 6;
+        edgeColor1 = "rgb(0, 0, 0)";
+        outerEdgeWidth1 = 20;        
+        outerEdgeColor1 = "rgb(255, 255, 255)";
+        shadowColor1 = "rgb(255, 255, 255)";
+        shadowBlur1 = 0;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+    // タイトル７
+    textPresetButtonA7.addEventListener('click', () => {
+        console.log('タイトルプリセットボタンがクリックされました');
+        textColor1 = "rgb(255, 255, 255)";
+        edgeWidth1 = 13;
+        edgeColor1 = "rgb(244, 5, 5)";
+        outerEdgeWidth1 = 14;        
+        outerEdgeColor1 = "rgb(255, 255, 255)";
+        shadowColor1 = "rgb(255, 255, 255)";
+        shadowBlur1 = 0;
+        shadowOffsetX1 = 0;
+        shadowOffsetY1 = 0;
+        edgeWidthInput1.value = edgeWidth1;
+        customEdgeColorInput1.value = edgeColor1;
+        outerEdgeWidthInput1.value = outerEdgeWidth1;
+        customOuterEdgeColorInput1.value = outerEdgeColor1;
+        customShadowColorInput1.value = shadowColor1;
+        shadowBlurInput1.value = shadowBlur1;
+        shadowOffsetXInput1.value = shadowOffsetX1;
+        shadowOffsetYInput1.value = shadowOffsetY1;
+        
+        redrawCanvas();
+    });
+
+    // テキストデフォルト
+    textPresetButtonB0.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(255, 136, 0)";
+        edgeWidth2 = 10;
+        edgeColor2 = "rgb(255, 255, 255)";
+        outerEdgeWidth2 = 11;        
+        outerEdgeColor2 = "rgb(255, 136, 0)";
+        shadowColor2 = 'black';
+        shadowBlur2 = 8;
+        shadowOffsetX2 = 8;
+        shadowOffsetY2 = -5;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト１
+    textPresetButtonB1.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(255, 255, 255)";
+        edgeWidth2 = 8;
+        edgeColor2 = "rgb(247, 168, 11)";
+        outerEdgeWidth2 = 17;        
+        outerEdgeColor2 = "rgb(255, 255, 255)";
+        shadowColor2 = "rgb(255, 207, 151)";
+        shadowBlur2 = 5;
+        shadowOffsetX2 = 12;
+        shadowOffsetY2 = 12;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト２
+    textPresetButtonB2.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(255, 242, 0)";
+        edgeWidth2 = 5;
+        edgeColor2 = "rgb(10, 10, 10)";
+        outerEdgeWidth2 = 15;        
+        outerEdgeColor2 = "rgb(255, 255, 255)";
+        shadowColor2 = "rgb(255, 239, 14)";
+        shadowBlur2 = 0;
+        shadowOffsetX2 = 0;
+        shadowOffsetY2 = 0;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト３
+    textPresetButtonB3.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(0, 0, 0)";
+        edgeWidth2 = 0;
+        edgeColor2 = "rgb(255, 255, 255)";
+        outerEdgeWidth2 = 4;        
+        outerEdgeColor2 = "rgb(255, 255, 255)";
+        shadowColor2 = "rgb(255, 255, 255)";
+        shadowBlur2 = 12;
+        shadowOffsetX2 = 0;
+        shadowOffsetY2 = 0;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト４
+    textPresetButtonB4.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(255, 255, 255)";
+        edgeWidth2 = 1;
+        edgeColor2 = "rgb(135, 135, 135)";
+        outerEdgeWidth2 = 0;        
+        outerEdgeColor2 = "rgb(255, 255, 255)";
+        shadowColor2 = "rgb(0, 0, 0)";
+        shadowBlur2 = 12;
+        shadowOffsetX2 = 0;
+        shadowOffsetY2 = 0;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト５
+    textPresetButtonB5.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(37, 219, 255)";
+        edgeWidth2 = 10;
+        edgeColor2 = "rgb(255, 255, 255)";
+        outerEdgeWidth2 = 15;        
+        outerEdgeColor2 = "rgb(37, 219, 255)";
+        shadowColor2 = "rgb(255, 255, 255)";
+        shadowBlur2 = 12;
+        shadowOffsetX2 = 0;
+        shadowOffsetY2 = 0;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト６
+    textPresetButtonB6.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(19, 188, 0)";
+        edgeWidth2 = 10;
+        edgeColor2 = "rgb(255, 255, 255)";
+        outerEdgeWidth2 = 15;        
+        outerEdgeColor2 = "rgb(2, 89, 1)";
+        shadowColor2 = "rgb(85, 255, 0)";
+        shadowBlur2 = 25;
+        shadowOffsetX2 = 0;
+        shadowOffsetY2 = 0;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+    // テキスト７
+    textPresetButtonB7.addEventListener('click', () => {
+        console.log('テキストプリセットボタンがクリックされました');
+        textColor2 = "rgb(255, 136, 0)";
+        edgeWidth2 = 10;
+        edgeColor2 = "rgb(255, 255, 255)";
+        outerEdgeWidth2 = 11;        
+        outerEdgeColor2 = "rgb(255, 136, 0)";
+        shadowColor2 = 'black';
+        shadowBlur2 = 8;
+        shadowOffsetX2 = 8;
+        shadowOffsetY2 = -5;
+        edgeWidthInput2.value = edgeWidth2;
+        customEdgeColorInput2.value = edgeColor2;
+        outerEdgeWidthInput2.value = outerEdgeWidth2;
+        customOuterEdgeColorInput2.value = outerEdgeColor2;
+        customShadowColorInput2.value = shadowColor2;
+        shadowBlurInput2.value = shadowBlur2;
+        shadowOffsetXInput2.value = shadowOffsetX2;
+        shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+
+
     // Canvasの再描画
     function redrawCanvas() {
         console.log('redrawCanvas() が呼び出されました');
@@ -1264,15 +1742,43 @@ function handleVideoFiles(files) {
         if (uploadedLogo) {
             console.log('ロゴをCanvasに描画します');
             // スライダーの値を使ってロゴのサイズと位置を計算
-            const logoWidth = 200 * logoScale; // ロゴの幅をスケールに合わせて変更
+            const logoWidth = logoScale * 200; // ロゴの幅をスケールに合わせて変更
             const logoHeight = uploadedLogo.height * (logoWidth / uploadedLogo.width); // 縦横比を維持した高さ
+
+            // シャドウ描画用の一時的な Canvas を作成
+            const shadowTempCanvas = document.createElement('canvas');
+            shadowTempCanvas.width = logoWidth;
+            shadowTempCanvas.height = logoHeight;
+            const shadowTempCtx = shadowTempCanvas.getContext('2d');
+
+            // シャドウの設定
+            shadowTempCtx.shadowColor = logoShadowColor; // シャドウの色を設定
+            shadowTempCtx.shadowBlur = logoShadowBlur; // シャドウのぼかしを設定
+            shadowTempCtx.shadowOffsetX = logoShadowOffsetX; // シャドウのXオフセットを設定
+            shadowTempCtx.shadowOffsetY = logoShadowOffsetY; // シャドウのYオフセットを設定
+
+            // ロゴ画像をシャドウ描画用の一時的な Canvas に描画
+            shadowTempCtx.drawImage(uploadedLogo, 0, 0, logoWidth, logoHeight);
+
+            // シャドウが描画された一時的な Canvas をメインの Canvas に描画
+            ctx.drawImage(shadowTempCanvas, logoX, logoY);
+
+            // シャドウのリセット
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+
             // エッジの描画
             if (logoEdgeWidth > 0) {
                 ctx.strokeStyle = logoEdgeColor;
                 ctx.lineWidth = logoEdgeWidth;
                 ctx.strokeRect(logoX, logoY, logoWidth, logoHeight);
             }
+
+            // ロゴ画像をメインのCanvasに描画
             ctx.drawImage(uploadedLogo, logoX, logoY, logoWidth, logoHeight);
+
         } else {
             console.log('ロゴはまだアップロードされていません');
         }

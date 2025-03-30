@@ -40,7 +40,7 @@
         </div>
         <button id="resetImageButton" class="reset-button">リセット</button>
         <button id="resizeImageButton" class="resize-button">幅1280pxにリサイズ</button>
-        <br><br>
+        <br>
             <!-- ロゴ or 画像 -->
         <label><span class="label-text">ロゴ or 画像</span>
         <div id="logoDropArea" class="drop-area">
@@ -59,20 +59,52 @@
             <label class="logo-slider-label" for="logoY">Y座標</label>
             <input type="range" id="logoY" min="-500" max="700" value="10" step="1">
         </div>
-        <label>エッジの色</label><br>
-        <div class="logo-edge-color-picker-container">
-            <button class="logo-edge-color-button" data-color="white" style="background-color: white;"></button>
-            <button class="logo-edge-color-button" data-color="black" style="background-color: black;"></button>
-            <button class="logo-edge-color-button" data-color="red" style="background-color: red;"></button>
-            <button class="logo-edge-color-button" data-color="blue" style="background-color: blue;"></button>
-            <button class="logo-edge-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
-            <input type="color" id="customLogoEdgeColor" value="#000000">
+        
+        <button id="resetLogoButton" class="reset-button">ロゴをリセット</button>
+        <button id="presetLogoButton" class="preset-button">サブ画像をセット</button></label><br>
+        <label><input type="checkbox" id="showLogoEdgeSettingsCheckbox"> エッジ設定 ▼</label><br>
+        <div id="logoEdgeSettings">       
+            <label>エッジの色</label><br>
+            <div class="logo-edge-color-picker-container">
+                <button class="logo-edge-color-button" data-color="white" style="background-color: white;"></button>
+                <button class="logo-edge-color-button" data-color="black" style="background-color: black;"></button>
+                <button class="logo-edge-color-button" data-color="red" style="background-color: red;"></button>
+                <button class="logo-edge-color-button" data-color="blue" style="background-color: blue;"></button>
+                <button class="logo-edge-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
+                <input type="color" id="customLogoEdgeColor" value="#000000">
+            </div>
+            <div class="slider-container">
+                <label for="logoEdgeWidth">太さ</label>
+                <input type="range" id="logoEdgeWidth" min="0" max="30" value="0">
+            </div>
+            <br><br>
         </div>
-        <div class="slider-container">
-            <label for="logoEdgeWidth">太さ</label>
-            <input type="range" id="logoEdgeWidth" min="0" max="30" value="0">
+        <label><input type="checkbox" id="showLogoShadowSettingsCheckbox"> シャドウ設定 ▼</label><br>
+        <div id="logoShadowSettings">
+            <label>シャドウの色</label><br>
+            <div class="logo-shadow-color-picker-container">
+                <button class="logo-shadow-color-button" data-color="white" style="background-color: #ffffff;"></button>
+                <button class="logo-shadow-color-button" data-color="black" style="background-color: black;"></button>
+                <button class="logo-shadow-color-button" data-color="red" style="background-color: red;"></button>
+                <button class="logo-shadow-color-button" data-color="blue" style="background-color: blue;"></button>
+                <button class="logo-shadow-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
+                <input type="color" id="customLogoShadowColor" value="#7b7b7b">
+            </div>
+            <div class="slider-container">
+                <label for="logoShadowBlur">ぼかし</label>
+                <input type="range" id="logoShadowBlur" min="0" max="50" value="1">
+            </div>
+            <div class="slider-container">
+                <label for="logoShadowOffsetX">X補正</label>
+                <input type="range" id="logoShadowOffsetX" min="-50" max="50" value="1">
+            </div>
+            <div class="slider-container">
+                <label for="logoShadowOffsetY">Y補正</label>
+                <input type="range" id="logoShadowOffsetY" min="-50" max="50" value="1">
+            </div>
+            <button id="resetLogoShadowButton" class="shadow-reset-button">シャドウなし</button>
+            <br><br>
         </div>
-        <br>
             <!-- 動画フレーム -->
         <label><span class="label-text">動画</span></label>
         <div id="videoDropArea" class="drop-area">
@@ -116,13 +148,9 @@
         <div class="video-button-container" style="display: none;">
             <button id="resetVideoButton" class="reset-button">削除</button>
             <button id="resizeVideoButton" class="resize-button">幅1280pxにリサイズ</button>
+            <button id="presetVideoButton" class="preset-button">PinPをセット</button>
         </div>
-            <!-- プリセット -->
-        <label><span class="label-text">プリセット</span></label>
-        <button id="resetLogoButton" class="reset-button">ロゴをセット</button>
-        <button id="presetLogoButton" class="preset-button">サブ画像をセット</button></label>
-        <button id="presetVideoButton" class="preset-button">動画フレームをセット</button></label>
-        <br><br>
+        <br>
             <!-- ダウンロード -->
         <button2 id="generateButton">ダウンロード</button2><br><br>
         <button2 id="generateCopyButton">画像をコピー</button2>
@@ -137,6 +165,32 @@
         </div>
         <label class="preview-label2">サイズ: 1280x720px (16:9)</label>
     </div>
+
+
+        <!-- スタイルパネル -->
+        <div class="text-preset" id="textPresetPanel">
+            <label><span class="label-text">スタイル</span></label>
+            <label>タイトル</label>
+            <button id="textPresetButtonA0" class="text-preset-button1">デフォルトタイトル</button></label><br>
+            <button id="textPresetButtonA1" class="text-preset-button1">タイトル１</button></label><br>
+            <button id="textPresetButtonA2" class="text-preset-button1">タイトル２</button></label><br>
+            <button id="textPresetButtonA3" class="text-preset-button1">タイトル３</button></label><br>
+            <button id="textPresetButtonA4" class="text-preset-button1">タイトル４</button></label><br>
+            <button id="textPresetButtonA5" class="text-preset-button1">タイトル５</button></label><br>
+            <button id="textPresetButtonA6" class="text-preset-button1">タイトル６</button></label><br>
+            <button id="textPresetButtonA7" class="text-preset-button1">タイトル７</button></label><br>
+            <br>
+            <label>テキスト</label>
+            <button id="textPresetButtonB0" class="text-preset-button2">デフォルトテキスト</button></label><br>
+            <button id="textPresetButtonB1" class="text-preset-button2">テキスト１</button></label><br>
+            <button id="textPresetButtonB2" class="text-preset-button2">テキスト２</button></label><br>
+            <button id="textPresetButtonB3" class="text-preset-button2">テキスト３</button></label><br>
+            <button id="textPresetButtonB4" class="text-preset-button2">テキスト４</button></label><br>
+            <button id="textPresetButtonB5" class="text-preset-button2">テキスト５</button></label><br>
+            <button id="textPresetButtonB6" class="text-preset-button2">テキスト６</button></label><br>
+            <button id="textPresetButtonB7" class="text-preset-button2">テキスト７</button></label><br>
+    
+        </div>
 
     <div class="settings">
         <!-- タイトル編集パネル -->
@@ -201,7 +255,7 @@
             <label for="outerEdgeWidth1">太さ</label>
             <input type="range" id="outerEdgeWidth1" min="0" max="50" value="0">
         </div> 
-        <label><input type="checkbox" id="showShadowSettings1"> シャドウ設定</label><br>
+        <label><input type="checkbox" id="showShadowSettings1"> シャドウ設定 ▼</label><br>
         <div id="shadowSettings1">       
             <label>シャドウの色</label><br>
             <div class="shadow-color-picker-container">
@@ -225,34 +279,38 @@
                 <input type="range" id="shadowOffsetY1" min="-50" max="50" value="0">
             </div>
         </div>
-                <label>背景色</label><br>
-        <div class="text-background-color-picker-container">
-            <button class="text-background-color-button1" data-color="white" style="background-color: white;"></button>
-            <button class="text-background-color-button1" data-color="black" style="background-color: black;"></button>
-            <button class="text-background-color-button1" data-color="red" style="background-color: red;"></button>
-            <button class="text-background-color-button1" data-color="blue" style="background-color: blue;"></button>
-            <button class="text-background-color-button1" data-color="green" style="background-color: green;"></button>
-            <button class="text-background-color-button1" data-color="Yellow" style="background-color: rgb(252, 255, 51);"></button>
-            <input type="color" id="customTextBackgroundColor1" value="#000000">
+        <label><input type="checkbox" id="showTextBackgroundSettings1"> タイトル背景設定 ▼</label><br>
+        <div id="textBackgroundSettings1">       
+                    <label>背景色</label><br>
+            <div class="text-background-color-picker-container">
+                <button class="text-background-color-button1" data-color="white" style="background-color: white;"></button>
+                <button class="text-background-color-button1" data-color="black" style="background-color: black;"></button>
+                <button class="text-background-color-button1" data-color="red" style="background-color: red;"></button>
+                <button class="text-background-color-button1" data-color="blue" style="background-color: blue;"></button>
+                <button class="text-background-color-button1" data-color="green" style="background-color: green;"></button>
+                <button class="text-background-color-button1" data-color="Yellow" style="background-color: rgb(252, 255, 51);"></button>
+                <input type="color" id="customTextBackgroundColor1" value="#000000">
+            </div>
+            <div class="slider-container">
+                <label for="textBackgroundOpacity1">不透明度</label>
+                <input type="range" id="textBackgroundOpacity1" min="0" max="1" value="0" step="0.01">
+            </div>
+            <div class="slider-container">
+                <label for="textBackgroundWidth1">長さ</label>
+                <input type="range" id="textBackgroundWidth1" min="-1000" max="1000" value="0" step="1">
+            </div>
+            <div class="slider-container">
+                <label for="textBackgroundHeight1">高さ</label>
+                <input type="range" id="textBackgroundHeight1" min="-500" max="800" value="-30" step="1">
+            </div>
+            <div class="slider-container">
+                <label for="textBackgroundPadding1">拡張</label>
+                <input type="range" id="textBackgroundPadding1" min="0" max="100" value="15" step="1">
+            </div>
         </div>
-        <div class="slider-container">
-            <label for="textBackgroundOpacity1">不透明度</label>
-            <input type="range" id="textBackgroundOpacity1" min="0" max="1" value="0" step="0.01">
-        </div>
-        <div class="slider-container">
-            <label for="textBackgroundWidth1">長さ</label>
-            <input type="range" id="textBackgroundWidth1" min="-1000" max="1000" value="0" step="1">
-        </div>
-        <div class="slider-container">
-            <label for="textBackgroundHeight1">高さ</label>
-            <input type="range" id="textBackgroundHeight1" min="-500" max="800" value="-30" step="1">
-        </div>
-        <div class="slider-container">
-            <label for="textBackgroundPadding1">拡張</label>
-            <input type="range" id="textBackgroundPadding1" min="0" max="100" value="15" step="1">
-        </div>
-        <br>
 
+        <!-- スタイルパネル表示／非表示 -->
+        <button id="showStylePanelButton">スタイルパネル</button><input type="checkbox" id="showStylePanel" style="display: none;"><br>
         <!-- テキスト編集パネル -->
         <label for="textInput2"><span class="label-text">テキスト</span></label>
         <textarea id="textInput2" rows="3" placeholder="テキストを入力"></textarea>
@@ -317,7 +375,7 @@
             <label for="outerEdgeWidth2">太さ</label>
             <input type="range" id="outerEdgeWidth2" min="0" max="50" value="0">
         </div>
-        <label><input type="checkbox" id="showShadowSettings2"> シャドウ設定</label><br>
+        <label><input type="checkbox" id="showShadowSettings2"> シャドウ設定 ▼</label><br>
         <div id="shadowSettings2">
             <label>シャドウの色</label><br>
             <div class="shadow-color-picker-container">
