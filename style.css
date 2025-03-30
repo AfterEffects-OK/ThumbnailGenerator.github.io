@@ -553,6 +553,17 @@ button:hover {
     border-radius: 0%; /* 角を丸くする（円形にする） */
 }
 
+/* 固定表示ボタンのスタイル */
+.fixed-buttons {
+    position: fixed; /* 固定表示にする */
+    bottom: 20px; /* 下からの位置 */
+    left: 29px; /* 左からの位置 */
+    z-index: 100; /* 他の要素よりも前面に表示 */
+    display: flex; /* フレックスボックスを使用 */
+    flex-direction: column; /* 縦方向に配置 */
+    gap: 10px; /* ボタン間の間隔を設定 */
+}
+
 /* 「サムじぇね」のラベルのスタイル */
 #logo-text {
     font-family: 'AkazukiPOP', sans-serif; /* フォントをAkazukiPOPに指定 */
