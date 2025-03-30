@@ -138,7 +138,7 @@
     let textRotation2 = 0; // 2つ目のテキストの回転角度の初期値
     let textColor1 = 'white'; // 1つ目のテキストの色の初期値
     let textColor2 = '#ff8800'; // 2つ目のテキストの色の初期値
-    let fontFamily1 = 'Dela Gothic One'; // 1つ目のテキストのフォントの初期値
+    let fontFamily1 = 'DelaSukoGothicOne-R'; // 1つ目のテキストのフォントの初期値
     let fontFamily2 = 'Stick'; // 2つ目のテキストのフォントの初期値
     let edgeColor1 = 'red'; // 1つ目のテキストのエッジの色の初期値
     let edgeColor2 = 'white'; // 2つ目のテキストのエッジの色の初期値
@@ -193,9 +193,9 @@
 
     // 利用可能なフォントのリスト
     const fontList = [
-        { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
         { name: 'Arial', value: 'Arial' },
         { name: 'Impact', value: 'Impact, sans-serif', isBold: true },
+        { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
         { name: 'DelaSukoGothicOne-R', value: "'DelaSukoGothicOne-R', sans-serif", isBold: false }, // DelaSukoGothicOne-Rを追加
         { name: 'YDWbananaslipplus', value: "'YDWbananaslipplus', sans-serif", isBold: false }, // YDWbananaslipplusを追加
         { name: 'AkazukiPOP', value: "'AkazukiPOP', sans-serif", isBold: false }, // AkazukiPOPを追加
