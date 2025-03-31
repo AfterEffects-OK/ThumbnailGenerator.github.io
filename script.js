@@ -1809,7 +1809,7 @@ function handleVideoFiles(files) {
     textPresetButtonA2P.addEventListener('click', () => {
         console.log('タイトル位置プリセットボタンがクリックされました');
         textX1 = 50;
-        textY1 = 340;
+        textY1 = 330;
         textYInput1.value = textX1;
         textYInput1.value = textY1;
 
@@ -2046,6 +2046,29 @@ function handleVideoFiles(files) {
         
         redrawCanvas();
     });
+
+    // テキスト位置デフォルト
+    textPresetButtonB0P.addEventListener('click', () => {
+        console.log('タイトル位置プリセットボタンがクリックされました');
+        textX2 = 50;
+        textY2 = 600;
+        textYInput2.value = textX2;
+        textYInput2.value = textY2;
+
+        redrawCanvas();
+    });
+
+    // テキスト位置１
+    textPresetButtonB1P.addEventListener('click', () => {
+        console.log('タイトル位置プリセットボタンがクリックされました');
+        textX2 = 50;
+        textY2 = 650;
+        textYInput2.value = textX2;
+        textYInput2.value = textY2;
+
+        redrawCanvas();
+    });
+
 
 
     // Canvasの再描画
