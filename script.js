@@ -227,7 +227,7 @@
     const fontList = [
         { name: 'Arial', value: 'Arial' },
         { name: 'Impact', value: 'Impact, sans-serif', isBold: true },
-        { name: 'デラゴシックワン', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'デラゴシックワン', value: "'Dela Gothic One', cursive", isBold: true, isDecorative: true }, // DelaGothicOne-Regularを追加
         { name: 'でらすこゴシックワン', value: "'DelaSukoGothicOne-R', sans-serif", isBold: false }, // DelaSukoGothicOne-Rを追加
         { name: 'バナナスリップ', value: "'YDWbananaslipplus', sans-serif", isBold: false }, // YDWbananaslipplusを追加
         { name: 'あかずきんポップ', value: "'AkazukiPOP', sans-serif", isBold: false }, // AkazukiPOPを追加
@@ -249,7 +249,7 @@
         { name: '玉ねぎ楷書激無料版v7改', value: "'玉ねぎ楷書激無料版v7改', sans-serif", isBold: false }, // 玉ねぎ楷書激無料版v7改を追加
         { name: 'F910新コミック体', value: "'f910-shin-comic-2.04', sans-serif", isBold: false }, // f910-shin-comic-2.04を追加
         { name: 'しっぽりアンチック', value: "'ShipporiAntique-Regular', sans-serif", isBold: false }, // ShipporiAntique-Regularを追加
-        { name: 'しっぽり明朝 B1', value: "'Shippori Mincho B1', serif" , url: "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap", isDecorative: true},
+        { name: 'しっぽり明朝 B1', value: "'ShipporiMinchoB1-Regular', serif", isDecorative: true}, // SShipporiMinchoB1-Regularを追加
         { name: 'しっぽり明朝 EB', value: "'ShipporiMincho-ExtraBold', sans-serif", isBold: false }, // ShipporiMincho-ExtraBoldを追加
         { name: 'Noto Sans JP', value: "'Noto Sans JP', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"},
         { name: 'M PLUS 1p', value: "'M PLUS 1p', sans-serif" , url: "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"},
