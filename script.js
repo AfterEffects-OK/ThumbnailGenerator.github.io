@@ -227,29 +227,30 @@
     const fontList = [
         { name: 'Arial', value: 'Arial' },
         { name: 'Impact', value: 'Impact, sans-serif', isBold: true },
-        { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
-        { name: 'DelaSukoGothicOne-R', value: "'DelaSukoGothicOne-R', sans-serif", isBold: false }, // DelaSukoGothicOne-Rを追加
-        { name: 'YDWbananaslipplus', value: "'YDWbananaslipplus', sans-serif", isBold: false }, // YDWbananaslipplusを追加
-        { name: 'AkazukiPOP', value: "'AkazukiPOP', sans-serif", isBold: false }, // AkazukiPOPを追加
-        { name: 'LightNovelPOPv2', value: "'LightNovelPOPv2', sans-serif", isBold: false }, // LightNovelPOPv2を追加
-        { name: 'keifont', value: "'keifont', sans-serif", isBold: false }, // keifontを追加
-        { name: 'puikko-Regular', value: "'puikko-Regular', sans-serif", isBold: false }, // puikko-Regularを追加
-        { name: 'Kaisotai-Next-UP-B', value: "'Kaisotai-Next-UP-B', sans-serif", isBold: false }, // Kaisotai-Next-UP-Bを追加
-        { name: 'kurobara-cinderella', value: "'kurobara-cinderella', sans-serif", isBold: false }, // kurobara-cinderellaを追加
-        { name: 'GN-KillGothic-U-KanaNA', value: "'GN-KillGothic-U-KanaNA', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNAを追加
-        { name: 'GN-KillGothic-U-KanaNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
-        { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
-        { name: 'KTEGAKI', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
-        { name: '851MkPOP_101', value: "'851MkPOP_101', sans-serif", isBold: false }, // 851MkPOP_101を追加
-        { name: 'GenEiNuGothic-EB', value: "'GenEiNuGothic-EB', sans-serif", isBold: false }, // GenEiNuGothic-EBを追加
-        { name: 'GenEiPOPlePw-Bk', value: "'GenEiPOPlePw-Bk', sans-serif", isBold: false }, // GenEiPOPlePw-Bkを追加
-        { name: 'GenEiLateGoP_v2', value: "'GenEiLateGoP_v2', sans-serif", isBold: false }, // GenEiLateGoP_v2を追加
-        { name: 'GenEiLateMinP_v2', value: "'GenEiLateMinP_v2', sans-serif", isBold: false }, // GenEiLateMinP_v2を追加
-        { name: 'genkai-mincho', value: "'genkai-mincho', sans-serif", isBold: false }, // genkai-minchoを追加
+        { name: 'デラゴシックワン', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'でらすこゴシックワン', value: "'DelaSukoGothicOne-R', sans-serif", isBold: false }, // DelaSukoGothicOne-Rを追加
+        { name: 'バナナスリップ', value: "'YDWbananaslipplus', sans-serif", isBold: false }, // YDWbananaslipplusを追加
+        { name: 'あかずきんポップ', value: "'AkazukiPOP', sans-serif", isBold: false }, // AkazukiPOPを追加
+        { name: 'ラノベPOP v2', value: "'LightNovelPOPv2', sans-serif", isBold: false }, // LightNovelPOPv2を追加
+        { name: 'けいふぉんと!', value: "'keifont', sans-serif", isBold: false }, // keifontを追加
+        { name: 'プイッコ', value: "'puikko-Regular', sans-serif", isBold: false }, // puikko-Regularを追加
+        { name: '廻想体ネクスト-Next-UP', value: "'Kaisotai-Next-UP-B', sans-serif", isBold: false }, // Kaisotai-Next-UP-Bを追加
+        { name: '黒薔薇シンデレラ', value: "'kurobara-cinderella', sans-serif", isBold: false }, // kurobara-cinderellaを追加
+        { name: 'GN-キルゴUかなNA', value: "'GN-KillGothic-U-KanaNA', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNAを追加
+        { name: 'GN-キルゴUかなNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
+        { name: 'しねきゃぷしょん', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
+        { name: 'kawaii手書き文字', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
+        { name: '851マカポップ', value: "'851MkPOP_101', sans-serif", isBold: false }, // 851MkPOP_101を追加
+        { name: '源暎Nuゴシック', value: "'GenEiNuGothic-EB', sans-serif", isBold: false }, // GenEiNuGothic-EBを追加
+        { name: '源暎ぽっぷる', value: "'GenEiPOPlePw-Bk', sans-serif", isBold: false }, // GenEiPOPlePw-Bkを追加
+        { name: '源暎ラテゴ v2', value: "'GenEiLateGoP_v2', sans-serif", isBold: false }, // GenEiLateGoP_v2を追加
+        { name: '源暎ラテミン 詰 v2', value: "'GenEiLateMinP_v2', sans-serif", isBold: false }, // GenEiLateMinP_v2を追加
+        { name: '源界明朝', value: "'genkai-mincho', sans-serif", isBold: false }, // genkai-minchoを追加
         { name: '玉ねぎ楷書激無料版v7改', value: "'玉ねぎ楷書激無料版v7改', sans-serif", isBold: false }, // 玉ねぎ楷書激無料版v7改を追加
-        { name: 'f910-shin-comic-2.04', value: "'f910-shin-comic-2.04', sans-serif", isBold: false }, // f910-shin-comic-2.04を追加
-        { name: 'ShipporiAntique-Regular', value: "'ShipporiAntique-Regular', sans-serif", isBold: false }, // ShipporiAntique-Regularを追加
-        { name: 'ShipporiMincho-ExtraBold', value: "'ShipporiMincho-ExtraBold', sans-serif", isBold: false }, // ShipporiMincho-ExtraBoldを追加
+        { name: 'F910新コミック体', value: "'f910-shin-comic-2.04', sans-serif", isBold: false }, // f910-shin-comic-2.04を追加
+        { name: 'しっぽりアンチック', value: "'ShipporiAntique-Regular', sans-serif", isBold: false }, // ShipporiAntique-Regularを追加
+        { name: 'しっぽり明朝 B1', value: "'Shippori Mincho B1', serif" , url: "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap", isDecorative: true},
+        { name: 'しっぽり明朝 EB', value: "'ShipporiMincho-ExtraBold', sans-serif", isBold: false }, // ShipporiMincho-ExtraBoldを追加
         { name: 'Noto Sans JP', value: "'Noto Sans JP', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"},
         { name: 'M PLUS 1p', value: "'M PLUS 1p', sans-serif" , url: "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"},
         { name: 'Roboto', value: "'Roboto', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"},
@@ -257,26 +258,25 @@
         { name: 'Pacifico', value: "'Pacifico', cursive" , url: "https://fonts.googleapis.com/css2?family=Pacifico&display=swap", isDecorative: true},
         { name: 'Lobster', value: "'Lobster', cursive" , url: "https://fonts.googleapis.com/css2?family=Lobster&display=swap", isDecorative: true},
         { name: 'Dancing Script', value: "'Dancing Script', cursive" , url: "https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap", isDecorative: true},
-        { name: 'Kosugi Maru', value: "'Kosugi Maru', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"},
-        { name: 'Sawarabi Mincho', value: "'Sawarabi Mincho', serif" , url: "https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap"},
-        { name: 'Sawarabi Gothic', value: "'Sawarabi Gothic', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"},
-        { name: 'Aoboshi One', value: "'Aoboshi One', serif", url: 'https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap', isBold: true, isDecorative: true },
-        { name: 'Mochiy Pop P One', value: "'Mochiy Pop P One', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap", isBold: true, isDecorative: true},
-        { name: 'DotGothic16', value: "'DotGothic16', sans-serif" , url: "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap", isDecorative: true},
+        { name: '小杉丸', value: "'Kosugi Maru', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"},
+        { name: 'さわらび明朝', value: "'Sawarabi Mincho', serif" , url: "https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap"},
+        { name: 'さわらびゴシック', value: "'Sawarabi Gothic', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"},
+        { name: 'あおぼし', value: "'Aoboshi One', serif", url: 'https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'モッチーポップ', value: "'Mochiy Pop P One', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap", isBold: true, isDecorative: true},
+        { name: 'ドットゴシック16', value: "'DotGothic16', sans-serif" , url: "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap", isDecorative: true},
         { name: 'Zen Maru Gothic', value: "'Zen Maru Gothic', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap"},
         { name: 'Zen Maru Gothic Black 900', value: "'Zen Maru Gothic', sans-serif", url: 'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@900&display=swap', isBold: true }, // Zen Maru Gothic Black 900を追加
-        { name: 'RocknRoll One', value: "'RocknRoll One', sans-serif" , url: "https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap", isBold: true},
-        { name: 'Hina Mincho', value: "'Hina Mincho', serif" , url: "https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap", isDecorative: true},
-        { name: 'Train One', value: "'Train One', cursive" , url: "https://fonts.googleapis.com/css2?family=Train+One&display=swap", isBold: true, isDecorative: true},
-        { name: 'Shippori Mincho B1', value: "'Shippori Mincho B1', serif" , url: "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap", isDecorative: true},
-        { name: 'Yusei Magic', value: "'Yusei Magic', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap", isDecorative: true},
-        { name: 'Kaisei Decol', value: "'Kaisei Decol', serif" , url: "https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap", isDecorative: true},
-        { name: 'Kaisei HarunoUmi', value: "'Kaisei HarunoUmi', serif" , url: "https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap", isDecorative: true},
-        { name: 'Stick', value: "'Stick', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Stick&display=swap", isBold: true},
-        { name: 'Zen Old Mincho', value: "'Zen Old Mincho', serif" , url: "https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap", isDecorative: true},
-        { name: 'Rampart One', value: "'Rampart One', cursive", url: 'https://fonts.googleapis.com/css2?family=Rampart+One&display=swap', isBold: true, isDecorative: true },
-        { name: 'Reggae One', value: "'Reggae One', cursive", url: 'https://fonts.googleapis.com/css2?family=Reggae+One&display=swap', isBold: true, isDecorative: true },
-        { name: 'Potta One', value: "'Potta One', cursive", url: 'https://fonts.googleapis.com/css2?family=Potta+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'ロックンロールOne', value: "'RocknRoll One', sans-serif" , url: "https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap", isBold: true},
+        { name: 'ひな明朝', value: "'Hina Mincho', serif" , url: "https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap", isDecorative: true},
+        { name: 'トレインOne', value: "'Train One', cursive" , url: "https://fonts.googleapis.com/css2?family=Train+One&display=swap", isBold: true, isDecorative: true},
+        { name: '油性マジック', value: "'Yusei Magic', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap", isDecorative: true},
+        { name: '解星デコール', value: "'Kaisei Decol', serif" , url: "https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap", isDecorative: true},
+        { name: '解星 春の海', value: "'Kaisei HarunoUmi', serif" , url: "https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap", isDecorative: true},
+        { name: 'スティック', value: "'Stick', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Stick&display=swap", isBold: true},
+        { name: 'ZENオールド明朝', value: "'Zen Old Mincho', serif" , url: "https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap", isDecorative: true},
+        { name: 'ランパートOne', value: "'Rampart One', cursive", url: 'https://fonts.googleapis.com/css2?family=Rampart+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'レゲエOne', value: "'Reggae One', cursive", url: 'https://fonts.googleapis.com/css2?family=Reggae+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'ポッタ', value: "'Potta One', cursive", url: 'https://fonts.googleapis.com/css2?family=Potta+One&display=swap', isBold: true, isDecorative: true },
         { name: 'sans-serif', value: 'sans-serif' },
         { name: 'serif', value: 'serif' },
         { name: 'monospace', value: 'monospace' }
