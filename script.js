@@ -14,6 +14,25 @@
     const logoShadowOffsetYInput = document.getElementById('logoShadowOffsetY'); // ロゴのシャドウのYオフセット
     const showLogoEdgeSettingsCheckbox = document.getElementById('showLogoEdgeSettingsCheckbox'); // ロゴのエッジの表示/非表示を切り替えるチェックボックス
     const logoEdgeSettingsDiv = document.getElementById('logoEdgeSettings'); // ロゴのエッジの設定項目を囲むdiv
+    const logo2Upload = document.getElementById('logo2Upload');
+    const logo2DropArea = document.getElementById('logo2DropArea');
+    const logo2ScaleInput = document.getElementById('logo2Scale');
+    const logo2XInput = document.getElementById('logo2X');
+    const logo2YInput = document.getElementById('logo2Y');
+    const resetLogo2Button = document.getElementById('resetLogo2Button');
+    const logo2EdgeColorButtons = document.querySelectorAll('.logo-edge-color-button'); // ロゴのエッジの色選択ボタン
+    const customLogo2EdgeColorInput = document.getElementById('customLogo2EdgeColor'); // ロゴのカスタムエッジカラーピッカー
+    const logo2EdgeWidthInput = document.getElementById('logo2EdgeWidth'); // ロゴのエッジの太さ
+    const showLogo2EdgeSettingsCheckbox = document.getElementById('showLogo2EdgeSettingsCheckbox'); // ロゴのエッジの表示/非表示を切り替えるチェックボックス
+    const logo2EdgeSettingsDiv = document.getElementById('logo2EdgeSettings'); // ロゴのエッジの設定項目を囲むdiv
+    const showLogo2ShadowSettingsCheckbox = document.getElementById('showLogo2ShadowSettingsCheckbox'); // ロゴのシャドウの表示/非表示を切り替えるチェックボックス
+    const logo2ShadowSettingsDiv = document.getElementById('logo2ShadowSettings'); // ロゴのシャドウの設定項目を囲むdiv
+    const logo2ShadowColorButtons = document.querySelectorAll('.logo-shadow-color-button'); // ロゴのシャドウの色選択ボタン
+    const customLogo2ShadowColorInput = document.getElementById('customLogo2ShadowColor'); // ロゴのカスタムシャドウカラーピッカー
+    const logo2ShadowBlurInput = document.getElementById('logo2ShadowBlur'); // ロゴのシャドウのぼかし
+    const logo2ShadowOffsetXInput = document.getElementById('logo2ShadowOffsetX'); // ロゴのシャドウのXオフセット
+    const logo2ShadowOffsetYInput = document.getElementById('logo2ShadowOffsetY'); // ロゴのシャドウのYオフセット
+    const resetLogo2ShadowButton = document.getElementById('resetLogo2ShadowButton');
     const textInput1 = document.getElementById('textInput1'); // 1つ目のテキスト入力欄
     const textInput2 = document.getElementById('textInput2'); // 2つ目のテキスト入力欄
     const generateButton = document.getElementById('generateButton');
@@ -126,6 +145,19 @@
     let logoShadowOffsetX = 1; // ロゴのシャドウのXオフセットの初期値
     let logoShadowOffsetY = 1; // ロゴのシャドウのYオフセットの初期値
     logoShadowSettingsDiv.style.display = 'none'; // 初期状態でロゴのシャドウ設定を非表示にする
+    let uploadedLogo2 = null;
+    let logo2Scale = 1; // ロゴのスケールの初期値
+    let logo2X = 10; // ロゴのX座標の初期値
+    let logo2Y = 10; // ロゴのY座標の初期値
+    let logo2EdgeColor = 'black'; // ロゴのエッジの色の初期値
+    let logo2EdgeWidth = 0; // ロゴのエッジの太さの初期値
+    let logo2ShadowColor = 'black'; // ロゴのシャドウの色の初期値
+    let logo2ShadowBlur = 1; // ロゴのシャドウのぼかしの初期値
+    let logo2ShadowOffsetX = 1; // ロゴのシャドウのXオフセットの初期値
+    let logo2ShadowOffsetY = 1; // ロゴのシャドウのYオフセットの初期値
+    logo2EdgeSettingsDiv.style.display = 'none'; // 初期状態でロゴのエッジ設定を非表示にする
+    logo2ShadowSettingsDiv.style.display = 'none'; // 初期状態でロゴのシャドウ設定を非表示にする
+    let isLogo2HeightResizeMode = false; // ロゴ2の高さリサイズモードを保持する変数
     let text1 = ''; // 1つ目のテキスト
     let text2 = ''; // 2つ目のテキスト
     let fontSize1 = 120; // 1つ目のテキストのフォントサイズ
@@ -138,7 +170,7 @@
     let textRotation2 = 0; // 2つ目のテキストの回転角度の初期値
     let textColor1 = 'white'; // 1つ目のテキストの色の初期値
     let textColor2 = '#ff8800'; // 2つ目のテキストの色の初期値
-    let fontFamily1 = 'DelaSukoGothicOne-R'; // 1つ目のテキストのフォントの初期値
+    let fontFamily1 = 'keifont'; // 1つ目のテキストのフォントの初期値
     let fontFamily2 = 'Stick'; // 2つ目のテキストのフォントの初期値
     let edgeColor1 = 'red'; // 1つ目のテキストのエッジの色の初期値
     let edgeColor2 = 'white'; // 2つ目のテキストのエッジの色の初期値
@@ -209,11 +241,15 @@
         { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
         { name: 'KTEGAKI', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
         { name: '851MkPOP_101', value: "'851MkPOP_101', sans-serif", isBold: false }, // 851MkPOP_101を追加
+        { name: 'GenEiNuGothic-EB', value: "'GenEiNuGothic-EB', sans-serif", isBold: false }, // GenEiNuGothic-EBを追加
         { name: 'GenEiPOPlePw-Bk', value: "'GenEiPOPlePw-Bk', sans-serif", isBold: false }, // GenEiPOPlePw-Bkを追加
         { name: 'GenEiLateGoP_v2', value: "'GenEiLateGoP_v2', sans-serif", isBold: false }, // GenEiLateGoP_v2を追加
         { name: 'GenEiLateMinP_v2', value: "'GenEiLateMinP_v2', sans-serif", isBold: false }, // GenEiLateMinP_v2を追加
         { name: 'genkai-mincho', value: "'genkai-mincho', sans-serif", isBold: false }, // genkai-minchoを追加
         { name: '玉ねぎ楷書激無料版v7改', value: "'玉ねぎ楷書激無料版v7改', sans-serif", isBold: false }, // 玉ねぎ楷書激無料版v7改を追加
+        { name: 'f910-shin-comic-2.04', value: "'f910-shin-comic-2.04', sans-serif", isBold: false }, // f910-shin-comic-2.04を追加
+        { name: 'ShipporiAntique-Regular', value: "'ShipporiAntique-Regular', sans-serif", isBold: false }, // ShipporiAntique-Regularを追加
+        { name: 'ShipporiMincho-ExtraBold', value: "'ShipporiMincho-ExtraBold', sans-serif", isBold: false }, // ShipporiMincho-ExtraBoldを追加
         { name: 'Noto Sans JP', value: "'Noto Sans JP', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"},
         { name: 'M PLUS 1p', value: "'M PLUS 1p', sans-serif" , url: "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap"},
         { name: 'Roboto', value: "'Roboto', sans-serif" , url: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"},
@@ -330,6 +366,12 @@
     logoUpload.addEventListener('change', (e) => {
         console.log('ロゴアップロードイベント (ファイル選択) が発生しました');
         handleLogoUpload(e);
+    });
+
+    // ロゴ2アップロード時の処理 (ファイル選択)
+    logo2Upload.addEventListener('change', (e) => {
+        console.log('ロゴ2アップロードイベント (ファイル選択) が発生しました');
+        handleLogo2Upload(e);
     });
 
     // 動画のアップロード処理
@@ -518,6 +560,58 @@ function handleVideoFiles(files) {
     imageDropArea.addEventListener('click', () => imageUpload.click());
     logoDropArea.addEventListener('click', () => logoUpload.click());
 
+    // ロゴ2のドロップエリアのイベント
+    logo2DropArea.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.add('drag-over');
+    });
+
+    logo2DropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    logo2DropArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.remove('drag-over');
+    });
+
+    logo2DropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.remove('drag-over');
+        handleLogo2Files(e.dataTransfer.files);
+    });
+
+    // ロゴ2のファイル選択イベント
+    logo2Upload.addEventListener('change', (e) => {
+        handleLogo2Files(e.target.files);
+    });
+
+    // ロゴ2のドロップエリアのイベント
+    logo2DropArea.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.add('drag-over');
+        logo2DropArea.classList.add('highlight');
+    });
+
+    logo2DropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.add('drag-over');
+        logo2DropArea.classList.add('highlight');
+    });
+
+    logo2DropArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.remove('drag-over');
+        logo2DropArea.classList.remove('highlight');
+    });
+
+    logo2DropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        logo2DropArea.classList.remove('drag-over');
+        logo2DropArea.classList.remove('highlight');
+        handleLogo2Files(e.dataTransfer.files);
+    });
+
     // 画像アップロード処理
     function handleImageUpload(e) {
         const file = e.target.files[0];
@@ -640,6 +734,179 @@ function handleVideoFiles(files) {
     logoShadowOffsetYInput.addEventListener('input', (e) => {
         console.log('ロゴのシャドウのYオフセット変更イベントが発生しました');
         logoShadowOffsetY = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+
+    // ロゴ2アップロード処理
+    function handleLogo2Upload(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                console.log('ロゴ2読み込み完了');
+                uploadedLogo2 = new Image();
+                uploadedLogo2.onload = () => {
+                    console.log('ロゴ2オブジェクト読み込み完了');
+                    redrawCanvas();
+                };
+                uploadedLogo2.src = event.target.result;
+                console.log('ロゴ2のData URL:', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // ロゴ2ファイルハンドリング処理
+    function handleLogo2Files(files) {
+        ([...files]).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                console.log('Uploaded logo2 file:', file);
+                uploadedLogo2 = new Image();
+                uploadedLogo2.onload = () => {
+                    console.log('ロゴ2オブジェクト読み込み完了');
+                    logo2Settings.style.display = 'block'; // ロゴ2の設定項目を表示
+                    redrawCanvas();
+                };
+                uploadedLogo2.src = event.target.result;
+                console.log('Uploaded logo2 src:',  uploadedLogo2.src);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+
+    // ロゴ2のスケール変更時のイベントリスナー
+    logo2ScaleInput.addEventListener('input', (e) => {
+        console.log('ロゴ2のスケール変更イベントが発生しました');
+        logo2Scale = parseFloat(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴ2のX座標変更時のイベントリスナー
+    logo2XInput.addEventListener('input', (e) => {
+        console.log('ロゴ2のX座標変更イベントが発生しました');
+        logo2X = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴ2のY座標変更時のイベントリスナー
+    logo2YInput.addEventListener('input', (e) => {
+        console.log('ロゴ2のY座標変更イベントが発生しました');
+        logo2Y = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴ2のリセットボタンのイベントリスナー
+    resetLogo2Button.addEventListener('click', () => {
+        console.log('ロゴ2のリセットボタンがクリックされました');
+        if (uploadedLogo2) {
+            if (isLogo2HeightResizeMode) {
+                // リセット
+                logo2Scale = 1;
+                logo2X = 10;
+                logo2Y = 10;
+                logo2EdgeWidth = 0;
+                logo2EdgeColor = "rgb(255, 255, 255)"
+                logo2ScaleInput.value = logo2Scale;
+                logo2XInput.value = logo2X;
+                logo2YInput.value = logo2Y;
+                logo2EdgeWidthInput.value = logo2EdgeWidth;
+                customLogo2EdgeColorInput.value = logo2EdgeColor;
+                resetLogo2Button.textContent = 'ロゴを拡大'; // ボタンのテキストを変更
+                resetLogo2Button.classList.remove('reset-mode'); // リセットモードのクラスを削除
+                resetLogo2Button.classList.add('resize-mode'); // リサイズモードのクラスを追加
+                isLogo2HeightResizeMode = false; // モードをリセットに変更
+            } else {
+                // 高さ720pxにリサイズ
+                const targetHeight = 720;
+                const heightScale = targetHeight / uploadedLogo2.height;
+                const scale = heightScale * 9.59;
+                logo2Scale = scale;
+                logo2X = 0;
+                logo2Y = 0;
+                logo2ScaleInput.value = logo2Scale;
+                logo2XInput.value = logo2X;
+                logo2YInput.value = logo2Y;
+                resetLogo2Button.textContent = 'ロゴをリセット'; // ボタンのテキストを変更
+                resetLogo2Button.classList.remove('resize-mode'); // リサイズモードのクラスを削除
+                resetLogo2Button.classList.add('reset-mode'); // リセットモードのクラスを追加
+                isLogo2HeightResizeMode = true; // モードを高さリサイズに変更
+            }
+            redrawCanvas();
+        } else {
+            console.log('ロゴ2がアップロードされていません');
+            alert('ロゴ2をアップロードしてください');
+        }
+    });
+
+    // ロゴ2のエッジ設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showLogo2EdgeSettingsCheckbox.addEventListener('change', (e) => {
+        console.log('ロゴ2のエッジ設定の表示/非表示チェックボックスが変更されました');
+        if (e.target.checked) {
+            logo2EdgeSettingsDiv.style.display = 'block'; // 表示
+        } else {
+            logo2EdgeSettingsDiv.style.display = 'none'; // 非表示
+        }
+    });
+
+    // ロゴ2のシャドウ設定の表示/非表示を切り替えるチェックボックスのイベントリスナー
+    showLogo2ShadowSettingsCheckbox.addEventListener('change', (e) => {
+        console.log('ロゴ2のシャドウ設定の表示/非表示チェックボックスが変更されました');
+        if (e.target.checked) {
+            logo2ShadowSettingsDiv.style.display = 'block'; // 表示
+        } else {
+            logo2ShadowSettingsDiv.style.display = 'none'; // 非表示
+        }
+    });
+
+    // ロゴ2のシャドウの色選択ボタンのイベントリスナー
+    logo2ShadowColorButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('ロゴ2のシャドウの色選択ボタンがクリックされました');
+            logo2ShadowColor = e.target.dataset.color;
+            redrawCanvas();
+        });
+    });
+
+    // ロゴ2のカスタムシャドウカラーピッカーのイベントリスナー
+    customLogo2ShadowColorInput.addEventListener('change', (e) => {
+        console.log('ロゴ2のカスタムシャドウカラーピッカーの値が変更されました');
+        logo2ShadowColor = e.target.value;
+        redrawCanvas();
+    });
+
+    // ロゴ2のシャドウのぼかし変更時のイベントリスナー
+    logo2ShadowBlurInput.addEventListener('input', (e) => {
+        console.log('ロゴ2のシャドウのぼかし変更イベントが発生しました');
+        logo2ShadowBlur = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴ2のシャドウのXオフセット変更時のイベントリスナー
+    logo2ShadowOffsetXInput.addEventListener('input', (e) => {
+        console.log('ロゴ2のシャドウのXオフセット変更イベントが発生しました');
+        logo2ShadowOffsetX = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴ2のシャドウのYオフセット変更時のイベントリスナー
+    logo2ShadowOffsetYInput.addEventListener('input', (e) => {
+        console.log('ロゴ2のシャドウのYオフセット変更イベントが発生しました');
+        logo2ShadowOffsetY = parseInt(e.target.value);
+        redrawCanvas();
+    });
+
+    // ロゴ2のシャドウのリセットボタンのイベントリスナー
+    resetLogo2ShadowButton.addEventListener('click', () => {
+        console.log('ロゴ2のリセットボタンがクリックされました');
+        logo2ShadowBlur = 0;
+        logo2ShadowOffsetX = 0;
+        logo2ShadowOffsetY = 0;
+        logo2ShadowBlurInput.value = logo2ShadowBlur;
+        logo2ShadowOffsetXInput.value = logo2ShadowOffsetX;
+        logo2ShadowOffsetYInput.value = logo2ShadowOffsetY;
         redrawCanvas();
     });
 
@@ -1495,15 +1762,15 @@ function handleVideoFiles(files) {
     // タイトル７
     textPresetButtonA7.addEventListener('click', () => {
         console.log('タイトルプリセットボタンがクリックされました');
-        textColor1 = "rgb(255, 255, 255)";
-        edgeWidth1 = 13;
-        edgeColor1 = "rgb(244, 5, 5)";
-        outerEdgeWidth1 = 14;        
+        textColor1 = "rgb(255, 69, 205)";
+        edgeWidth1 = 12;
+        edgeColor1 = "rgb(105, 0, 0)";
+        outerEdgeWidth1 = 25;        
         outerEdgeColor1 = "rgb(255, 255, 255)";
-        shadowColor1 = "rgb(255, 255, 255)";
-        shadowBlur1 = 0;
-        shadowOffsetX1 = 0;
-        shadowOffsetY1 = 0;
+        shadowColor1 = "rgb(255, 0, 0)";
+        shadowBlur1 = 30;
+        shadowOffsetX1 = 5;
+        shadowOffsetY1 = 8;
         edgeWidthInput1.value = edgeWidth1;
         customEdgeColorInput1.value = edgeColor1;
         outerEdgeWidthInput1.value = outerEdgeWidth1;
@@ -1513,6 +1780,39 @@ function handleVideoFiles(files) {
         shadowOffsetXInput1.value = shadowOffsetX1;
         shadowOffsetYInput1.value = shadowOffsetY1;
         
+        redrawCanvas();
+    });
+
+    // タイトル位置デフォルト
+    textPresetButtonA0P.addEventListener('click', () => {
+        console.log('タイトル位置プリセットボタンがクリックされました');
+        textX1 = 50;
+        textY1 = 400;
+        textYInput1.value = textX1;
+        textYInput1.value = textY1;
+
+        redrawCanvas();
+    });
+
+    // タイトル位置１
+    textPresetButtonA1P.addEventListener('click', () => {
+        console.log('タイトル位置プリセットボタンがクリックされました');
+        textX1 = 50;
+        textY1 = 490;
+        textYInput1.value = textX1;
+        textYInput1.value = textY1;
+
+        redrawCanvas();
+    });
+
+    // タイトル位置２
+    textPresetButtonA2P.addEventListener('click', () => {
+        console.log('タイトル位置プリセットボタンがクリックされました');
+        textX1 = 50;
+        textY1 = 340;
+        textYInput1.value = textX1;
+        textYInput1.value = textY1;
+
         redrawCanvas();
     });
 
@@ -1680,15 +1980,15 @@ function handleVideoFiles(files) {
     // テキスト７
     textPresetButtonB7.addEventListener('click', () => {
         console.log('テキストプリセットボタンがクリックされました');
-        textColor2 = "rgb(255, 136, 0)";
+        textColor2 = "rgb(255, 47, 220)";
         edgeWidth2 = 10;
         edgeColor2 = "rgb(255, 255, 255)";
-        outerEdgeWidth2 = 11;        
-        outerEdgeColor2 = "rgb(255, 136, 0)";
-        shadowColor2 = 'black';
-        shadowBlur2 = 8;
-        shadowOffsetX2 = 8;
-        shadowOffsetY2 = -5;
+        outerEdgeWidth2 = 15;        
+        outerEdgeColor2 = "rgb(205, 0, 171)";
+        shadowColor2 = "rgb(255, 0, 174)";
+        shadowBlur2 = 25;
+        shadowOffsetX2 = 0;
+        shadowOffsetY2 = 0;
         edgeWidthInput2.value = edgeWidth2;
         customEdgeColorInput2.value = edgeColor2;
         outerEdgeWidthInput2.value = outerEdgeWidth2;
@@ -1697,6 +1997,52 @@ function handleVideoFiles(files) {
         shadowBlurInput2.value = shadowBlur2;
         shadowOffsetXInput2.value = shadowOffsetX2;
         shadowOffsetYInput2.value = shadowOffsetY2;
+        
+        redrawCanvas();
+    });
+
+
+    // テキスト背景デフォルト
+    textPresetButtonB0B.addEventListener('click', () => {
+        console.log('テキスト背景プリセットボタンがクリックされました');
+        textBackgroundOpacity2 = 0;
+        textBackgroundHeight2 = 0;
+        textBackgroundColor2 = "black";
+        textBackgroundPadding2 = 0;
+        textBackgroundOpacityInput2.value = textBackgroundOpacity2;
+        textBackgroundHeightInput2.value = textBackgroundHeight2;
+        customTextBackgroundColorInput2.value = textBackgroundColor2;
+        textBackgroundPaddingInput2.value = textBackgroundPadding2;
+        
+        redrawCanvas();
+    });
+
+    // テキスト背景１
+    textPresetButtonB1B.addEventListener('click', () => {
+        console.log('テキスト背景プリセットボタンがクリックされました');
+        textBackgroundOpacity2 = 1;
+        textBackgroundHeight2 = -80;
+        textBackgroundColor2 = "green";
+        textBackgroundPadding2 = 20;
+        textBackgroundOpacityInput2.value = textBackgroundOpacity2;
+        textBackgroundHeightInput2.value = textBackgroundHeight2;
+        customTextBackgroundColorInput2.value = textBackgroundColor2;
+        textBackgroundPaddingInput2.value = textBackgroundPadding2;
+        
+        redrawCanvas();
+    });
+
+    // テキスト背景２
+    textPresetButtonB2B.addEventListener('click', () => {
+        console.log('テキスト背景プリセットボタンがクリックされました');
+        textBackgroundOpacity2 = 1;
+        textBackgroundHeight2 = -120;
+        textBackgroundColor2 = "green";
+        textBackgroundPadding2 = 20;
+        textBackgroundOpacityInput2.value = textBackgroundOpacity2;
+        textBackgroundHeightInput2.value = textBackgroundHeight2;
+        customTextBackgroundColorInput2.value = textBackgroundColor2;
+        textBackgroundPaddingInput2.value = textBackgroundPadding2;
         
         redrawCanvas();
     });
@@ -1781,6 +2127,51 @@ function handleVideoFiles(files) {
 
         } else {
             console.log('ロゴはまだアップロードされていません');
+        }
+
+        // ロゴ2の描画
+        if (uploadedLogo2) {
+            console.log('ロゴ2をCanvasに描画します');
+            // スライダーの値を使ってロゴのサイズと位置を計算
+            const logo2Width = logo2Scale * 200; // ロゴの幅をスケールに合わせて変更
+            const logo2Height = uploadedLogo2.height * (logo2Width / uploadedLogo2.width); // 縦横比を維持した高さ
+
+            // シャドウ描画用の一時的な Canvas を作成
+            const shadowTempCanvas = document.createElement('canvas');
+            shadowTempCanvas.width = logo2Width;
+            shadowTempCanvas.height = logo2Height;
+            const shadowTempCtx = shadowTempCanvas.getContext('2d');
+
+            // シャドウの設定
+            shadowTempCtx.shadowColor = logo2ShadowColor; // シャドウの色を設定
+            shadowTempCtx.shadowBlur = logo2ShadowBlur; // シャドウのぼかしを設定
+            shadowTempCtx.shadowOffsetX = logo2ShadowOffsetX; // シャドウのXオフセットを設定
+            shadowTempCtx.shadowOffsetY = logo2ShadowOffsetY; // シャドウのYオフセットを設定
+
+            // ロゴ画像をシャドウ描画用の一時的な Canvas に描画
+            shadowTempCtx.drawImage(uploadedLogo2, 0, 0, logo2Width, logo2Height);
+
+            // シャドウが描画された一時的な Canvas をメインの Canvas に描画
+            ctx.drawImage(shadowTempCanvas, logo2X, logo2Y);
+
+            // シャドウのリセット
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+
+            // エッジの描画
+            if (logo2EdgeWidth > 0) {
+                ctx.strokeStyle = logo2EdgeColor;
+                ctx.lineWidth = logo2EdgeWidth;
+                ctx.strokeRect(logo2X, logo2Y, logo2Width, logo2Height);
+            }
+
+            // ロゴ画像をメインのCanvasに描画
+            ctx.drawImage(uploadedLogo2, logo2X, logo2Y, logo2Width, logo2Height);
+
+        } else {
+            console.log('ロゴ2はまだアップロードされていません');
         }
 
         // テキストの描画

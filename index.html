@@ -72,6 +72,7 @@
                 <button class="logo-edge-color-button" data-color="black" style="background-color: black;"></button>
                 <button class="logo-edge-color-button" data-color="red" style="background-color: red;"></button>
                 <button class="logo-edge-color-button" data-color="blue" style="background-color: blue;"></button>
+                <button class="logo-edge-color-button" data-color="green" style="background-color: green;"></button>
                 <button class="logo-edge-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
                 <input type="color" id="customLogoEdgeColor" value="#000000">
             </div>
@@ -79,7 +80,7 @@
                 <label for="logoEdgeWidth">太さ</label>
                 <input type="range" id="logoEdgeWidth" min="0" max="30" value="0">
             </div>
-            <br><br>
+            <br>
         </div>
         <label><input type="checkbox" id="showLogoShadowSettingsCheckbox"> シャドウ設定 ▼</label><br>
         <div id="logoShadowSettings">
@@ -89,6 +90,7 @@
                 <button class="logo-shadow-color-button" data-color="black" style="background-color: black;"></button>
                 <button class="logo-shadow-color-button" data-color="red" style="background-color: red;"></button>
                 <button class="logo-shadow-color-button" data-color="blue" style="background-color: blue;"></button>
+                <button class="logo-shadow-color-button" data-color="green" style="background-color: green;"></button>
                 <button class="logo-shadow-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
                 <input type="color" id="customLogoShadowColor" value="#7b7b7b">
             </div>
@@ -154,6 +156,72 @@
             <button id="presetVideoButton" class="preset-button">PinPをセット</button><br>
         </div>
     </div>
+    <div class="setting-section">
+        <!-- ロゴ or 画像　2枚目 -->
+        <label><span class="label-text">ロゴ or 画像</span>
+        <div id="logo2DropArea" class="drop-area">
+            <label for="logo2Upload">画像を選択 または <br>ドラッグ&ドロップ</label>
+            <input type="file" id="logo2Upload" accept="image/*" style="display:none;">
+        </div>
+        <div id="logo2Settings" style="display: none;">
+            <div class="slider-container">
+                <label class="logo-slider-label" for="logo2Scale">サイズ</label>
+                <input type="range" id="logo2Scale" min="0.1" max="10" value="1" step="0.1">
+            </div>
+            <div class="slider-container">
+                <label class="logo-slider-label" for="logo2X">X座標</label>
+                <input type="range" id="logo2X" min="-500" max="1200" value="10" step="1">
+            </div>
+            <div class="slider-container">
+                <label class="logo-slider-label" for="logo2Y">Y座標</label>
+                <input type="range" id="logo2Y" min="-500" max="700" value="10" step="1">
+            </div>
+            <button id="resetLogo2Button" class="reset-button">ロゴを拡大</button>
+            </label><br>
+            <label><input type="checkbox" id="showLogo2EdgeSettingsCheckbox"> エッジ設定 ▼</label><br>
+            <div id="logo2EdgeSettings">
+                <label>エッジの色</label><br>
+                <div class="logo-edge-color-picker-container">
+                    <button class="logo-edge-color-button" data-color="white" style="background-color: white;"></button>
+                    <button class="logo-edge-color-button" data-color="black" style="background-color: black;"></button>
+                    <button class="logo-edge-color-button" data-color="red" style="background-color: red;"></button>
+                    <button class="logo-edge-color-button" data-color="blue" style="background-color: blue;"></button>
+                    <button class="logo-edge-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
+                    <input type="color" id="customLogo2EdgeColor" value="#000000">
+                </div>
+                <div class="slider-container">
+                    <label for="logo2EdgeWidth">太さ</label>
+                    <input type="range" id="logo2EdgeWidth" min="0" max="30" value="0">
+                </div>
+                <br>
+            </div>
+            <label><input type="checkbox" id="showLogo2ShadowSettingsCheckbox"> シャドウ設定 ▼</label><br>
+            <div id="logo2ShadowSettings">
+                <label>シャドウの色</label><br>
+                <div class="logo-shadow-color-picker-container">
+                    <button class="logo-shadow-color-button" data-color="white" style="background-color: #ffffff;"></button>
+                    <button class="logo-shadow-color-button" data-color="black" style="background-color: black;"></button>
+                    <button class="logo-shadow-color-button" data-color="red" style="background-color: red;"></button>
+                    <button class="logo-shadow-color-button" data-color="blue" style="background-color: blue;"></button>
+                    <button class="logo-shadow-color-button" data-color="rgb(240, 220, 2)" style="background-color: rgb(240, 220, 2);"></button>
+                    <input type="color" id="customLogo2ShadowColor" value="#7b7b7b">
+                </div>
+                <div class="slider-container">
+                    <label for="logo2ShadowBlur">ぼかし</label>
+                    <input type="range" id="logo2ShadowBlur" min="0" max="50" value="1">
+                </div>
+                <div class="slider-container">
+                    <label for="logo2ShadowOffsetX">X補正</label>
+                    <input type="range" id="logo2ShadowOffsetX" min="-50" max="50" value="1">
+                </div>
+                <div class="slider-container">
+                    <label for="logo2ShadowOffsetY">Y補正</label>
+                    <input type="range" id="logo2ShadowOffsetY" min="-50" max="50" value="1">
+                </div>
+                <button id="resetLogo2ShadowButton" class="shadow-reset-button">シャドウなし</button><br><br>
+            </div>
+        </div>
+    </div>
         <br><br><br>
             <!-- ダウンロード -->
         <div class="fixed-buttons">
@@ -176,6 +244,7 @@
         <!-- スタイルパネル -->
         <div class="text-preset" id="textPresetPanel">
             <label><span class="label-text">スタイル</span></label>
+            <div class="setting-section">
             <label>タイトル</label>
             <button id="textPresetButtonA0" class="text-preset-button1">デフォルトタイトル</button></label><br>
             <button id="textPresetButtonA1" class="text-preset-button1">タイトル１</button></label><br>
@@ -185,7 +254,11 @@
             <button id="textPresetButtonA5" class="text-preset-button1">タイトル５</button></label><br>
             <button id="textPresetButtonA6" class="text-preset-button1">タイトル６</button></label><br>
             <button id="textPresetButtonA7" class="text-preset-button1">タイトル７</button></label><br>
-            <br>
+            <label>タイトル位置</label>
+            <button id="textPresetButtonA0P" class="text-preset-button1">デフォルト位置</button></label><br>
+            <button id="textPresetButtonA1P" class="text-preset-button1">タイトル位置１</button></label><br>
+            <button id="textPresetButtonA2P" class="text-preset-button1">タイトル位置２</button></label><br>
+        </div>
             <label>テキスト</label>
             <button id="textPresetButtonB0" class="text-preset-button2">デフォルトテキスト</button></label><br>
             <button id="textPresetButtonB1" class="text-preset-button2">テキスト１</button></label><br>
@@ -195,6 +268,10 @@
             <button id="textPresetButtonB5" class="text-preset-button2">テキスト５</button></label><br>
             <button id="textPresetButtonB6" class="text-preset-button2">テキスト６</button></label><br>
             <button id="textPresetButtonB7" class="text-preset-button2">テキスト７</button></label><br>
+            <label>テキスト背景</label>
+            <button id="textPresetButtonB0B" class="text-preset-button2">デフォルトテキスト</button></label><br>
+            <button id="textPresetButtonB1B" class="text-preset-button2">テキスト背景１</button></label><br>
+            <button id="textPresetButtonB2B" class="text-preset-button2">テキスト背景２</button></label><br>
     
         </div>
 

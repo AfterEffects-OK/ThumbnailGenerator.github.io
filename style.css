@@ -59,6 +59,12 @@
     font-style: normal; /* フォントのスタイル（通常） */
 }
 @font-face {
+    font-family: 'f910-shin-comic-2.04'; /* フォントファミリー名を指定 */
+    src: url('fonts/f910-shin-comic-2.04.otf') format('opentype'); /* otf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
     font-family: 'puikko-Regular'; /* フォントファミリー名を指定 */
     src: url('fonts/puikko-Regular.otf') format('opentype'); /* otf形式のフォントファイル */
     font-weight: normal; /* フォントの太さ（通常） */
@@ -112,6 +118,24 @@
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
+@font-face {
+    font-family: 'ShipporiAntique-Regular'; /* フォントファミリー名を指定 */
+    src: url('fonts/ShipporiAntique-Regular.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'ShipporiMincho-ExtraBold'; /* フォントファミリー名を指定 */
+    src: url('fonts/ShipporiMincho-ExtraBold.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'GenEiNuGothic-EB'; /* フォントファミリー名を指定 */
+    src: url('fonts/GenEiNuGothic-EB.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
 
 /* 基本的なレイアウトとスタイル */
 .container {
@@ -122,7 +146,7 @@
 }
 
 .sidebar {
-    width: 210px; /* サイドバーの幅を少し広げました */
+    width: 250px; /* サイドバーの幅を少し広げました */
     background-color: #e2eef1;
     padding: 20px; /* パディングを増やしました */
     overflow-y: auto;
@@ -198,6 +222,7 @@
 
 .text-preset {
     width: 130px;
+    font-size: 12px; /* ここでフォントサイズを調整します */
     background-color: #e2eef1; /* テキスト設定項目の背景色を画像設定項目と同じにする */
     padding: 20px;
     overflow-y: auto;
@@ -302,7 +327,7 @@ button {
 button2 {
     background-color: #007bff;
     color: white;
-    padding: 8px 48px; /* パディングを調整 */
+    padding: 8px 68px; /* パディングを調整 */
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -553,7 +578,7 @@ button:hover {
     border-radius: 0%; /* 角を丸くする（円形にする） */
 }
 
-/* 固定表示ボタンのスタイル */
+/* ダウンロードとクリップボードにコピーを固定表示ボタンにするスタイル */
 .fixed-buttons {
     position: fixed; /* 固定表示にする */
     bottom: 20px; /* 下からの位置 */
@@ -699,11 +724,32 @@ button:hover {
     background-color: #e50606;
 }
 
+/* リセットモードのボタンのスタイル */
+.reset-mode {
+    background-color: #82c4ff; /* リセットモードの背景色 */
+    border: 1px solid #37afff; /* リセットモードの枠線の色 */
+}
+
+/* リサイズモードのボタンのスタイル */
+.resize-mode {
+    background-color: #ff8282; /* リサイズモードの背景色 */
+    border: 1px solid #ff3737; /* リサイズモードの枠線の色 */
+}
+
+.reset-mode:hover {
+    background-color: #0681e5;
+}
+
+.resize-mode:hover {
+    background-color: #e50606;
+}
+
+
 /* 動画のリセットボタンとリサイズボタンのコンテナ */
 .video-button-container {
     flex-direction: column; /* 縦並びにする */
     gap: 7px; /* ボタン間の間隔を設定 */
-    margin-left: 3px;
+    margin-left: 0px;
 }
 
 /* プリセットボタン */
@@ -726,9 +772,10 @@ button:hover {
     cursor: pointer;
     font-size: 11px;
     width: 130px; /* 幅を固定 */
+    margin-bottom: 5px;
 }
 .text-preset-button2 {
-    background-color: #99d0e3;
+    background-color: #91c7d8;
     border: 1px solid #3766ff;
     border-radius: 20px;
     padding: 0px 0px;
@@ -736,6 +783,7 @@ button:hover {
     cursor: pointer;
     font-size: 11px;
     width: 130px; /* 幅を固定 */
+    margin-bottom: 5px;
 }
 
 .reset-button:hover {
@@ -861,15 +909,63 @@ button:hover {
     /* 他のスタイルも必要に応じて追加 */
 }
 
+/* ロゴ2のシャドウの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.logo2-shadow-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* ロゴ2のシャドウの色アイコンのスタイル */
+.logo2-shadow-color-button {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #b5b5b5;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+/* ロゴ2のカスタムシャドウカラーピッカーのスタイル */
+#customLogo2ShadowColor {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    height: 25px;             /* 高さを調整 */
+    width: 50px;              /* 幅を調整 */
+    border: 1px solid #616161; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(234, 234, 234));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* ロゴ2のシャドウのカラーピッカーのバリュー部分のスタイル */
+#customLogo2ShadowColor::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customLogo2ShadowColor::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customLogo2ShadowColor::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
 /* 動画フレームスライダー設定 */
 #videoFrameSliderContainer {
-    width: 200px;
+    width: 250px;
     margin-left: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
 }
 
 #videoFrameSlider {
-    width: 200px; /* スライダーの幅を150pxに設定 */
+    width: 230px; /* スライダーの幅を150pxに設定 */
     margin-bottom: 0px;
     /* 他のスタイルも必要に応じて追加 */
 }
@@ -877,13 +973,14 @@ button:hover {
 #videoSizeSliderContainer,
 #videoXSliderContainer,
 #videoYSliderContainer {
-    width: 200px;
+    width: 230px;
 }
 
 /* 動画のエッジの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
 .video-edge-color-picker-container {
     display: flex; /* フレックスボックスを使用 */
     align-items: center; /* 垂直方向の中央揃え */
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
