@@ -148,6 +148,30 @@
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
+@font-face {
+    font-family: 'RocknRollOne-Regular'; /* フォントファミリー名を指定 */
+    src: url('fonts/RocknRollOne-Regular.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'ReggaeOne-Regular'; /* フォントファミリー名を指定 */
+    src: url('fonts/ReggaeOne-Regular.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'MochiyPopOne-Regular'; /* フォントファミリー名を指定 */
+    src: url('fonts/MochiyPopOne-Regular.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
+@font-face {
+    font-family: 'Stick-Regular'; /* フォントファミリー名を指定 */
+    src: url('fonts/Stick-Regular.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
 
 /* 基本的なレイアウトとスタイル */
 .container {
