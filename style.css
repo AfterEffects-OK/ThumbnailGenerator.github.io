@@ -106,6 +106,12 @@
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
+@font-face {
+    font-family: '851MkPOP_101'; /* フォントファミリー名を指定 */
+    src: url('fonts/851MkPOP_101.ttf') format('opentype'); /* ttf形式のフォントファイル */
+    font-weight: normal; /* フォントの太さ（通常） */
+    font-style: normal; /* フォントのスタイル（通常） */
+}
 
 /* 基本的なレイアウトとスタイル */
 .container {
@@ -190,6 +196,14 @@
     flex-shrink: 0; /* 設定領域の幅が縮まないようにする */
 }
 
+.text-preset {
+    width: 130px;
+    background-color: #e2eef1; /* テキスト設定項目の背景色を画像設定項目と同じにする */
+    padding: 20px;
+    overflow-y: auto;
+    flex-shrink: 0; /* 設定領域の幅が縮まないようにする */
+}
+
 /* 設定項目のラベル全体のスタイル */
 .settings label {
     font-size: 13px; /* ここでフォントサイズを調整します */
@@ -202,7 +216,7 @@
 }
 
 .logo-slider-label {
-    font-size: 16px; /* 必要に応じて個別にフォントサイズを調整します */
+    font-size: 14px; /* 必要に応じて個別にフォントサイズを調整します */
     display: block;
     margin-bottom: 0px;
 }
@@ -216,7 +230,7 @@
 .slider-container {
     display: flex; /* 横並びにする */
     align-items: center; /* 縦方向中央揃え */
-    margin-bottom: 0px; /* 下マージンを追加 */
+    margin-bottom: -4px; /* 下マージンを追加 */
     justify-content: center; /* 水平方向中央揃え */
 }
 
@@ -539,6 +553,17 @@ button:hover {
     border-radius: 0%; /* 角を丸くする（円形にする） */
 }
 
+/* 固定表示ボタンのスタイル */
+.fixed-buttons {
+    position: fixed; /* 固定表示にする */
+    bottom: 20px; /* 下からの位置 */
+    left: 29px; /* 左からの位置 */
+    z-index: 100; /* 他の要素よりも前面に表示 */
+    display: flex; /* フレックスボックスを使用 */
+    flex-direction: column; /* 縦方向に配置 */
+    gap: 10px; /* ボタン間の間隔を設定 */
+}
+
 /* 「サムじぇね」のラベルのスタイル */
 #logo-text {
     font-family: 'AkazukiPOP', sans-serif; /* フォントをAkazukiPOPに指定 */
@@ -571,11 +596,21 @@ button:hover {
 /* 項目名（ラベル）のスタイル */
 .label-text {
     font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントを丸ゴシック体に指定 */
-    font-size: 18px; /* フォントサイズを指定 */
+    font-size: 16px; /* フォントサイズを指定 */
     font-weight: bold; /* 太字にするかどうか */
     color: #333; /* 文字色を指定 */
     display: block; /* ブロック要素にする */
     margin-bottom: -2px; /* 下マージンを追加 */
+}
+/* 項目名（ラベル）のスタイル２ */
+.label-text2 {
+    font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントを丸ゴシック体に指定 */
+    font-size: 17px; /* フォントサイズを指定 */
+    font-weight: bold; /* 太字にするかどうか */
+    color: #005fd2; /* 文字色を指定 */
+    display: block; /* ブロック要素にする */
+    margin-top: 15px; /* 上マージンを追加 */
+    margin-bottom: 15px; /* 下マージンを追加 */
 }
 
 /* テキストの背景色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
@@ -639,6 +674,17 @@ button:hover {
     font-size: 11px;
 }
 
+/* ロゴのシャドウのリセットボタン */
+.shadow-reset-button {
+    background-color: #82c4ff;
+    border: 1px solid #37afff;
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin-left: 63px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
 .resize-button:hover {
     background-color: #0681e5;
 }
@@ -671,8 +717,46 @@ button:hover {
     font-size: 11px;
 }
 
+.text-preset-button1 {
+    background-color: #829dff;
+    border: 1px solid #3766ff;
+    border-radius: 20px;
+    padding: 0px 0px;
+    margin-left: 0px;
+    cursor: pointer;
+    font-size: 11px;
+    width: 130px; /* 幅を固定 */
+}
+.text-preset-button2 {
+    background-color: #99d0e3;
+    border: 1px solid #3766ff;
+    border-radius: 20px;
+    padding: 0px 0px;
+    margin-left: 0px;
+    cursor: pointer;
+    font-size: 11px;
+    width: 130px; /* 幅を固定 */
+}
+
 .reset-button:hover {
     background-color: #0681e5;
+}
+
+/* スタイルパネル表示／非表示ボタン */
+#showStylePanelButton {
+    background-color: #cbf0f9; /* ボタンの背景色 */
+    color: #030984; /* ボタンの文字色 */
+    border: none; /* 枠線を削除 */
+    padding: 8px 55px; /* パディングを追加 */
+    cursor: pointer; /* カーソルをポインタに変更 */
+    border-radius: 20px; /* 角を丸くする */
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#showStylePanelButton.active {
+    background-color: #007bff; /* アクティブ時の背景色 */
+    color: white; /* アクティブ時の文字色 */
 }
 
 /* ロゴのエッジの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
@@ -723,12 +807,61 @@ button:hover {
     border-radius: 0%; /* 角を丸くする（円形にする） */
 }
 
+/* ロゴのシャドウの色アイコンとカスタムカラーピッカーを囲むdivのスタイル */
+.logo-shadow-color-picker-container {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* ロゴのシャドウの色アイコンのスタイル */
+.logo-shadow-color-button {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #b5b5b5;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+/* ロゴのカスタムシャドウカラーピッカーのスタイル */
+#customLogoShadowColor {
+    -webkit-appearance: none; /* デフォルトのスタイルを無効化（Safari用） */
+    -moz-appearance: none;    /* デフォルトのスタイルを無効化（Firefox用） */
+    appearance: none;         /* デフォルトのスタイルを無効化（その他ブラウザ用） */
+    height: 25px;             /* 高さを調整 */
+    width: 50px;              /* 幅を調整 */
+    border: 1px solid #616161; /* 枠線を調整 */
+    border-radius: 0%;       /* 角を丸くする（円形にする） */
+    cursor: pointer;          /* カーソルをポインタに変更 */
+    padding: 1;               /* パディングを削除 */
+    margin-right: 5px;        /* 右に少し余白を追加 */
+    /* グラデーションカラーを設定 */
+    background-image: linear-gradient(to right, rgb(234, 234, 234));
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+/* ロゴのシャドウのカラーピッカーのバリュー部分のスタイル */
+#customLogoShadowColor::-webkit-color-swatch-wrapper {
+    padding: 1; /* パディングを削除 */
+}
+
+#customLogoShadowColor::-webkit-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+#customLogoShadowColor::-moz-color-swatch {
+    border: none; /* 枠線を削除 */
+    border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
 #videoFrameSlider {
     width: 200px; /* スライダーの幅を150pxに設定 */
     margin-bottom: 10px;
     /* 他のスタイルも必要に応じて追加 */
 }
 
+/* 動画フレームスライダー設定 */
 #videoFrameSliderContainer {
     width: 200px;
     margin-left: 0px;
@@ -784,4 +917,11 @@ button:hover {
 #customVideoEdgeColor::-moz-color-swatch {
     border: none; /* 枠線を削除 */
     border-radius: 0%; /* 角を丸くする（円形にする） */
+}
+
+/* 設定項目の区切り線 */
+.setting-section {
+    border-bottom: 1px solid #ccc; /* 下側に区切り線を追加 */
+    padding-bottom: 6px; /* 下側にパディングを追加して間隔を調整 */
+    margin-bottom: 6px; /* 下側にマージンを追加して間隔を調整 */
 }
