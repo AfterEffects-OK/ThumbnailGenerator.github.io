@@ -195,7 +195,7 @@
     const fontList = [
         { name: 'Arial', value: 'Arial' },
         { name: 'Impact', value: 'Impact, sans-serif', isBold: true },
-        // { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
+        { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
         { name: 'DelaSukoGothicOne-R', value: "'DelaSukoGothicOne-R', sans-serif", isBold: false }, // DelaSukoGothicOne-Rを追加
         { name: 'YDWbananaslipplus', value: "'YDWbananaslipplus', sans-serif", isBold: false }, // YDWbananaslipplusを追加
         { name: 'AkazukiPOP', value: "'AkazukiPOP', sans-serif", isBold: false }, // AkazukiPOPを追加
