@@ -29,44 +29,8 @@
     font-style: normal; /* フォントのスタイル（通常） */
 }
 @font-face {
-    font-family: 'GN-KillGothic-U-KanaNB'; /* フォントファミリー名を指定 */
-    src: url('fonts/GN-KillGothic-U-KanaNB.ttf') format('truetype'); /* ttf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
-    font-family: 'GN-KillGothic-U-KanaNA'; /* フォントファミリー名を指定 */
-    src: url('fonts/GN-KillGothic-U-KanaNA.ttf') format('truetype'); /* ttf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
-    font-family: 'cinecaption226'; /* フォントファミリー名を指定 */
-    src: url('fonts/cinecaption226.ttf') format('truetype'); /* ttf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
-    font-family: 'KTEGAKI'; /* フォントファミリー名を指定 */
-    src: url('fonts/KTEGAKI.ttf') format('truetype'); /* ttf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
     font-family: 'AkazukiPOP'; /* フォントファミリー名を指定 */
     src: url('fonts/AkazukiPOP.otf') format('opentype'); /* otf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
-    font-family: 'puikko-Regular'; /* フォントファミリー名を指定 */
-    src: url('fonts/puikko-Regular.otf') format('opentype'); /* otf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
-    font-family: 'Kaisotai-Next-UP-B'; /* フォントファミリー名を指定 */
-    src: url('fonts/Kaisotai-Next-UP-B.ttf') format('opentype'); /* ttf形式のフォントファイル */
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
@@ -91,12 +55,6 @@
 @font-face {
     font-family: 'genkai-mincho'; /* フォントファミリー名を指定 */
     src: url('fonts/genkai-mincho.ttf') format('opentype'); /* ttf形式のフォントファイル */
-    font-weight: normal; /* フォントの太さ（通常） */
-    font-style: normal; /* フォントのスタイル（通常） */
-}
-@font-face {
-    font-family: 'kurobara-cinderella'; /* フォントファミリー名を指定 */
-    src: url('fonts/kurobara-cinderella.ttf') format('opentype'); /* ttf形式のフォントファイル */
     font-weight: normal; /* フォントの太さ（通常） */
     font-style: normal; /* フォントのスタイル（通常） */
 }
