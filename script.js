@@ -195,19 +195,19 @@
     const fontList = [
         { name: 'Arial', value: 'Arial' },
         { name: 'Impact', value: 'Impact, sans-serif', isBold: true },
-        { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
+        // { name: 'Dela Gothic One', value: "'Dela Gothic One', cursive", url: 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap', isBold: true, isDecorative: true },
         { name: 'DelaSukoGothicOne-R', value: "'DelaSukoGothicOne-R', sans-serif", isBold: false }, // DelaSukoGothicOne-Rを追加
         { name: 'YDWbananaslipplus', value: "'YDWbananaslipplus', sans-serif", isBold: false }, // YDWbananaslipplusを追加
         { name: 'AkazukiPOP', value: "'AkazukiPOP', sans-serif", isBold: false }, // AkazukiPOPを追加
         { name: 'LightNovelPOPv2', value: "'LightNovelPOPv2', sans-serif", isBold: false }, // LightNovelPOPv2を追加
         { name: 'keifont', value: "'keifont', sans-serif", isBold: false }, // keifontを追加
-        { name: 'puikko-Regular', value: "'puikko-Regular', sans-serif", isBold: false }, // puikko-Regularを追加
-        { name: 'Kaisotai-Next-UP-B', value: "'Kaisotai-Next-UP-B', sans-serif", isBold: false }, // Kaisotai-Next-UP-Bを追加
-        { name: 'kurobara-cinderella', value: "'kurobara-cinderella', sans-serif", isBold: false }, // kurobara-cinderellaを追加
-        { name: 'GN-KillGothic-U-KanaNA', value: "'GN-KillGothic-U-KanaNA', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNAを追加
-        { name: 'GN-KillGothic-U-KanaNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
-        { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
-        { name: 'KTEGAKI', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
+        // { name: 'puikko-Regular', value: "'puikko-Regular', sans-serif", isBold: false }, // puikko-Regularを追加
+        // { name: 'Kaisotai-Next-UP-B', value: "'Kaisotai-Next-UP-B', sans-serif", isBold: false }, // Kaisotai-Next-UP-Bを追加
+        // { name: 'kurobara-cinderella', value: "'kurobara-cinderella', sans-serif", isBold: false }, // kurobara-cinderellaを追加
+        // { name: 'GN-KillGothic-U-KanaNA', value: "'GN-KillGothic-U-KanaNA', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNAを追加
+        // { name: 'GN-KillGothic-U-KanaNB', value: "'GN-KillGothic-U-KanaNB', sans-serif", isBold: false }, // GN-KillGothic-U-KanaNBを追加
+        // { name: 'cinecaption226', value: "'cinecaption226', sans-serif", isBold: false }, // cinecaption226を追加
+        // { name: 'KTEGAKI', value: "'KTEGAKI', sans-serif", isBold: false }, // KTEGAKIを追加
         { name: '851MkPOP_101', value: "'851MkPOP_101', sans-serif", isBold: false }, // 851MkPOP_101を追加
         { name: 'GenEiPOPlePw-Bk', value: "'GenEiPOPlePw-Bk', sans-serif", isBold: false }, // GenEiPOPlePw-Bkを追加
         { name: 'GenEiLateGoP_v2', value: "'GenEiLateGoP_v2', sans-serif", isBold: false }, // GenEiLateGoP_v2を追加
