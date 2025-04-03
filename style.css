@@ -116,7 +116,7 @@
 }
 
 .sidebar {
-    width: 210px; /* サイドバーの幅を少し広げました */
+    width: 230px; /* サイドバーの幅を少し広げました */
     background-color: #e2eef1;
     padding: 20px; /* パディングを増やしました */
     overflow-y: auto;
